@@ -1,5 +1,6 @@
 cd dist
 echo "-----------------------------  Inside dist folder ----------------------------- "
+git fetch --all
 git checkout deploy-dist
 echo "-----------------------------  Checked out remote branch ----------------------------- "
 git pull origin deploy-dist
