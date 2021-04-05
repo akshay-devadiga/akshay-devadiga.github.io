@@ -1,7 +1,14 @@
 cd dist
+echo "-----------------------------  Inside dist folder ----------------------------- "
 git checkout deploy-dist
+echo "-----------------------------  Checked out remote branch ----------------------------- "
 git pull origin deploy-dist
-git add .  
+echo "-----------------------------  Pulling the latest code ----------------------------- "
+git add . 
+echo "-----------------------------  Adding local files ----------------------------- "
 git commit -m "New deploy"
+echo "----------------------------- Commiting  ----------------------------- "
 git push -u origin deploy-dist
+echo "----------------------------- Updated -----------------------------"
 cd ..
+git checkout main
