@@ -12,7 +12,7 @@
             />
           </v-col>
           <v-col :cols="expand ? 12 : 3" class="pt-0">
-            <v-expansion-panels>
+            <v-expansion-panels :class="{'elevation-5':!expand}">
             <v-expansion-panel
               popout 
                 @click="
@@ -20,6 +20,7 @@
                     (expand = !expand), (!expandedPanelName?expandedPanelName = projects.title:expandedPanelName=null);
                   }
                 "
+                v-show="expandedPanelName==projects.title|| !expandedPanelName"
               >
                 <v-expansion-panel-header
                   class="primary--text"
@@ -27,7 +28,7 @@
                 >
                   <span class="font-weight-bold">{{ projects.title }}</span>
                   <template v-slot:actions>
-                    <v-btn icon>
+                    <v-btn color="primary" class="text-capitalize" icon>
                      <v-icon color="primary" @click="projects.showDialog=false">
                       {{ expand && expandedPanelName==projects.title?'mdi-close' :projects.icon }}
                     </v-icon>
@@ -47,6 +48,7 @@
                     (expand = !expand), (!expandedPanelName?expandedPanelName = experience.title:expandedPanelName=null);
                   }
                 "
+                v-show="expandedPanelName==experience.title|| !expandedPanelName"
               >
                 <v-expansion-panel-header
                   class="primary--text"
@@ -74,6 +76,7 @@
                     (expand = !expand), (!expandedPanelName?expandedPanelName = reachOutToMe.title:expandedPanelName=null);
                   }
                 "
+                v-show="expandedPanelName==reachOutToMe.title|| !expandedPanelName"
               >
                 <v-expansion-panel-header
                   class="primary--text"
