@@ -11,13 +11,13 @@
               v-on:animCreated="handleAnimation"
             />
           </v-col>
-          <v-col :cols="expand ? 12 : 3" class="pt-0">
+          <v-col :cols="expand? 12 : 3" class="pt-0">
             <v-expansion-panels :class="{'elevation-5':!expand}">
             <v-expansion-panel
               popout 
                 @click="
                   () => {
-                    (expand = !expand), (!expandedPanelName?expandedPanelName = projects.title:expandedPanelName=null);
+                    (expand = !expand), (!expandedPanelName?expandedPanelName = projects.title:expandedPanelName=null,isReachOut=false);
                   }
                 "
                 v-show="expandedPanelName==projects.title|| !expandedPanelName"
@@ -45,7 +45,7 @@
               popout 
                 @click="
                   () => {
-                    (expand = !expand), (!expandedPanelName?expandedPanelName = experience.title:expandedPanelName=null);
+                    (expand = !expand), (!expandedPanelName?expandedPanelName = experience.title:expandedPanelName=null,isReachOut=false);
                   }
                 "
                 v-show="expandedPanelName==experience.title|| !expandedPanelName"
@@ -69,11 +69,11 @@
                   </v-sheet>
                 </v-expansion-panel-content>
               </v-expansion-panel>
-                <v-expansion-panel
+                            <v-expansion-panel
               popout 
                 @click="
                   () => {
-                    (expand = !expand), (!expandedPanelName?expandedPanelName = reachOutToMe.title:expandedPanelName=null);
+                    isReachOut = !isReachOut
                   }
                 "
                 v-show="expandedPanelName==reachOutToMe.title|| !expandedPanelName"
@@ -82,7 +82,7 @@
                   class="primary--text"
                   disable-icon-rotate
                 >
-                  <span class="font-weight-bold">{{ reachOutToMe.title }}</span>
+                  <span class="font-weight-bold">{{ reachoutText[0] }}</span>
                   <template v-slot:actions>
                     <v-btn icon>
                      <v-icon color="primary" @click="reachOutToMe.showDialog=false">
@@ -91,14 +91,10 @@
                     </v-btn>
                   </template></v-expansion-panel-header
                 >
-                <v-expansion-panel-content>
-                  <v-sheet width="90vh" height="90vh" rounded>
-                    <experience v-if="expandedPanelName == 'Experience'" />
-                  </v-sheet>
-                </v-expansion-panel-content>
               </v-expansion-panel>
             </v-expansion-panels>
           </v-col>
+          <v-col cols="12">  <reach-out v-if="isReachOut" /></v-col>
         </v-row>
       </v-container>
     </v-main>
@@ -110,16 +106,23 @@ import * as backgroundAnimationData from "./assets/background.json";
 import AboutMe from "./components/AboutMe";
 import Experience from './components/Experience.vue';
 import Projects from './components/Projects.vue';
+import ReachOut from './components/ReachOut.vue';
 export default {
   name: "App",
-
   components: {
     AboutMe,
     Experience,
-    Projects
+    Projects,
+    ReachOut
   },
   created() {
     console.log(this.$vuetify.breakpoint);
+  },
+   mounted(){
+    window.setInterval(()=>{
+      this.pollReachOutText();
+    }, 5000);
+
   },
   methods: {
     handleAnimation: function(anim) {
@@ -141,8 +144,14 @@ export default {
     onSpeedChange: function() {
       this.anim.setSpeed(this.animationSpeed);
     },
+
+    pollReachOutText(){
+      const first = this.reachoutText.shift();
+      this.reachoutText = this.reachoutText.concat(first);
+    }
   },
   data: () => ({
+    isReachOut:false,
     expand: false,
     defaultOptions: { animationData: animationData.default },
     defaultBackgroundOptions: {
@@ -158,10 +167,9 @@ export default {
     },
     experience:{ icon: "home_repair_service", title: "Experience", showDialog: false },
     reachOutToMe:{icon: "remember_me", title: "Reach out to me", showDialog: false},
-    lottieHeight: 200,
-    lottieWidth: 200,
     colSize: 3,
-    expandedPanelName:null
+    expandedPanelName:null,
+    reachoutText: ['Reach out to me', 'Hire me']
   }),
 };
 </script>
