@@ -11,7 +11,9 @@
   },
   "dependencies": {
     "@vue/cli-service": "^4.5.12",
+    "moment": "^2.29.1",
     "vue": "^2.6.12",
+    "vue-anime": "^1.0.0",
     "vue-cli": "^2.9.6",
     "vue-lottie": "^0.2.1",
     "vue-template-compiler": "^2.6.9",

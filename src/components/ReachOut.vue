@@ -5,7 +5,7 @@
         ><v-btn
           href="https://www.linkedin.com/in/akshay-devadiga-652687115"
           target="_blank"
-          class="linkedIn-btn"
+          class="linkedIn-btn float-animation-effect"
           fab small color="white" 
         >
           <v-icon color="primary">
@@ -13,7 +13,7 @@
           </v-icon>
         </v-btn></v-col
       ><v-col cols="1" class="text-center"
-        ><v-btn  href="mailto:akshaydevadiga4@gmail.com" class="gmail-btn" target="_blank" fab small color="white" >
+        ><v-btn  href="mailto:akshaydevadiga4@gmail.com" class="gmail-btn float-animation-effect" target="_blank" fab small color="white" >
           <v-icon  color="primary">
             mdi-gmail
           </v-icon>
@@ -21,7 +21,7 @@
         
         </v-col
       ><v-col cols="1" class="text-center"
-        ><v-btn @click="copyContactNumberToClipboard" class="phone-btn" fab small color="white" >
+        ><v-btn @click="copyContactNumberToClipboard" class="phone-btn float-animation-effect" fab small color="white" >
           <v-icon color="primary">
             mdi-phone
           </v-icon>
