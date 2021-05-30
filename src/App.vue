@@ -55,7 +55,7 @@
                   >
                   <v-expansion-panel-content>
                     <v-sheet width="90vh" height="90vh" rounded>
-                      <projects v-if="expandedPanelName == 'Projects'" />
+                      <projects v-if="expandedPanelName == 'Projects/My Work'" />
                     </v-sheet>
                   </v-expansion-panel-content>
                 </v-expansion-panel>
@@ -335,7 +335,7 @@ var months = age.months();
     activeTab: "Experience",
     projects: {
       icon: "science",
-      title: "Projects",
+      title: "Projects/My Work",
       showDialog: false,
     },
     experience: {

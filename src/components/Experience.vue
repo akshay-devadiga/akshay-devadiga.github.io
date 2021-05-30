@@ -77,7 +77,7 @@ export default {
         year: 'August 2019 - Present',
          logo: 'https://www.deltax.com/wp-content/uploads/2018/04/Delta-horizontal-revision-topbar.png',
         title:'Associate Product Engineer',
-        description:'Working as frontend engineer with multiple responsiblities ranging from building new features, owning modules, assisting in hiring...',
+        description:'Currently working as frontend engineer with multiple responsiblities ranging from building new features, owning modules...',
          tags:['Fabricjs','Vuejs','MSSql','Javascript']
       }
     ],
