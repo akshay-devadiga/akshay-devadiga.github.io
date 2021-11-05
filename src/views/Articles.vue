@@ -14,6 +14,7 @@
         </v-btn-toggle>
       </v-col>
     </v-row>
+     <VuePerfectScrollbar class="mt-2" :style="`max-height: ${$vuetify.breakpoint.height-$vuetify.breakpoint.height*0.16}px !important`" :settings="settings">
     <v-row v-if="posts==0">
       <v-col cols="6" v-for="i in 10" :key="i">
         <v-card class="mx-auto" max-width="344" outlined>
@@ -54,17 +55,23 @@
         </v-card>
       </v-col>
     </v-row>
+    </VuePerfectScrollbar>
   </v-container>
 </template>
-
 <script>
-export default {
-  data() {
+import VuePerfectScrollbar from 'vue-perfect-scrollbar'
+  export default {
+    components:{
+      VuePerfectScrollbar
+    },
+     data() {
     return {
+      settings: {
+        maxScrollbarLength: 160,
+        suppressScrollX:true
+      },
       posts:0
-    };
+    }
   },
-};
+  }
 </script>
-
-<style lang="scss" scoped></style>

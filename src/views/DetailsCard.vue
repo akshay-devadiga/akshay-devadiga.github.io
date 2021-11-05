@@ -110,4 +110,12 @@ export default {
 <style lang="scss" scoped>
 .details-btn {
   min-width: 100% !important;
-}</style>
+}
+.float-animation-effect {
+  animation: float 6s ease-in-out infinite;
+}
+
+.google-border {
+  border-radius: 10px !important;
+}
+</style>
