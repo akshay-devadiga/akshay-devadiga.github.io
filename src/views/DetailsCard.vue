@@ -99,7 +99,7 @@ export default {
   },
   methods:{
       goToDetails(){
-          this.$router.push({name:'aboutme'});
+          this.$router.push({name:'experience'});
           this.$emit('goToDetails');
           this.isArrowButtonClicked = !this.isArrowButtonClicked;
       }
