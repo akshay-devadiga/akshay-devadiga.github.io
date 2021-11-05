@@ -1,6 +1,5 @@
 <template>
-     <v-container style="width:80vw">
-        
+     <v-container class="mx-4"> 
          <v-row><v-col cols="12"> 
              <v-timeline>
       <v-timeline-item
@@ -12,7 +11,7 @@
         <template v-slot:opposite>
           <span>{{n.year}}</span>
         </template>
-        <v-card class="elevation-2" height="200">
+        <v-card class="elevation-2" height="230">
              <v-card-title>
        
                <v-list-item class="ma-0 pa-0">
