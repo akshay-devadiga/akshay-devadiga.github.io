@@ -78,10 +78,12 @@
         
         <v-row v-else class="align-start justify-start">
            <v-col cols="6" v-for="favoriteArticle in favoriteArticles" :key="favoriteArticle">
-            <v-card class="mx-auto" max-width="344" outlined>
+            <v-card class="mx-auto" max-width="344" outlined  @click="goToArticle(favoriteArticle.postUrl)">
               <v-list-item three-line>
                 <v-list-item-avatar tile size="80" color="secondary lighten-1"
-                  ><v-icon color="primary lighten-1"
+                  >
+                  <v-img :src="favoriteArticle.postThumbnail"/>
+                  <v-icon color="primary lighten-1"
                     >mdi-book-open-outline</v-icon
                   ></v-list-item-avatar
                 >
@@ -122,6 +124,9 @@ export default {
     goToPost(slug) {
       let url = `https://akshay-devadiga.hashnode.dev/${slug}`;
       window.open(url, "_blank").focus();
+    },
+    goToArticle(postUrl) {
+      window.open(postUrl, "_blank").focus();
     },
   },
   data() {
