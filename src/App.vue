@@ -15,9 +15,8 @@
               </v-row> </v-col
             ><v-col cols="8" :style="{ background: isDetailsPage ? $vuetify.theme.defaults.light.secondary: 'white' }">
               <v-row class="justify-center align-center fill-height">
-                <v-col cols="12" >
+                <v-col cols="12" class="fill-height" >
                   <main-content />
-
                 </v-col>
               </v-row> </v-col
           ></v-row>
