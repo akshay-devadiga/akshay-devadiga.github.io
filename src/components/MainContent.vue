@@ -4,7 +4,7 @@
       class="mt-2"
       :style="
         `max-height: ${$vuetify.breakpoint.height -
-          $vuetify.breakpoint.height * 0.05}px !important`
+          $vuetify.breakpoint.height * 0.05}px !important; overflow:hidden !important`
       "
       :class="{'main-content':isDetailsPage}"
       :settings="settings"
