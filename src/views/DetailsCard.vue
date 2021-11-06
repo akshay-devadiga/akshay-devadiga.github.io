@@ -94,7 +94,7 @@ export default {
       var age = moment.duration(a.diff(b));
       var years = age.years();
       var months = age.months();
-      return `${years} year and ${months} months`;
+      return `${years} years and ${months} months`;
     },
   },
   methods:{

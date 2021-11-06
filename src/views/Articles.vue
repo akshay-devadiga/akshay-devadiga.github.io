@@ -44,16 +44,7 @@
         fluid
         class="mx-4 justify-start align-start"
       >
-        <VuePerfectScrollbar
-          class="mt-2"
-          :style="
-            `max-height: ${$vuetify.breakpoint.height -
-              $vuetify.breakpoint.height * 0.25}px !important`
-          "
-          :settings="settings"
-          v-if="posts == 0"
-        >
-        <v-row class="align-start justify-start">  
+        <v-row   v-if="posts == 0" class="align-start justify-start">  
           <v-col cols="6" v-for="post in hashnodePosts" :key="post">
             <v-card
               class="mx-auto"
@@ -84,18 +75,8 @@
               </v-list-item>
             </v-card>
           </v-col></v-row>
-         
-        </VuePerfectScrollbar>
-        <VuePerfectScrollbar
-          class="mt-2"
-          :style="
-            `max-height: ${$vuetify.breakpoint.height -
-              $vuetify.breakpoint.height * 0.25}px !important;`
-          "
-          v-else
-          :settings="settings"
-        >
-        <v-row class="align-start justify-start">
+        
+        <v-row v-else class="align-start justify-start">
            <v-col cols="6" v-for="favoriteArticle in favoriteArticles" :key="favoriteArticle">
             <v-card class="mx-auto" max-width="344" outlined>
               <v-list-item three-line>
@@ -115,8 +96,6 @@
             </v-card>
           </v-col>
         </v-row>
-         
-        </VuePerfectScrollbar>
       </v-container>
       </v-col>
     </v-row>

@@ -17,15 +17,6 @@
         </v-btn-toggle>
       </v-col>
     </v-row>
-    <VuePerfectScrollbar
-      class="mt-2"
-      :style="
-        `max-height: ${$vuetify.breakpoint.height -
-          $vuetify.breakpoint.height * 0.16}px !important`
-      "
-      :settings="settings"
-    >
-    {{projects}}
       <v-row class="justify-space-between" v-if="projects == 0">
         <v-col cols="6" v-for="webProject in webProjects" :key="webProject">
           <v-card class="mx-auto my-12 round-radius" max-width="374">
@@ -275,7 +266,6 @@
           </v-card>
         </v-col>
       </v-row>
-    </VuePerfectScrollbar>
   </v-container>
 </template>
 <script>
@@ -289,10 +279,6 @@ export default {
   },
   data() {
     return {
-      settings: {
-        maxScrollbarLength: 160,
-        suppressScrollX: true,
-      },
       projects: 0,
       webProjects,
       graphicDesignProjects,

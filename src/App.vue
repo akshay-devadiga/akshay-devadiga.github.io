@@ -168,23 +168,23 @@ body::-webkit-scrollbar-thumb {
 }
 </style>
 <style lang="scss">
-@keyframes float {
-  0% {
-    // box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-    transform: translatey(0px);
-  }
-  50% {
-    // box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
-    transform: translatey(-6px);
-  }
-  100% {
-    // box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
-    transform: translatey(0px);
-  }
-}
-.float-animation-effect {
-  animation: float 6s ease-in-out infinite;
-}
+// @keyframes float {
+//   0% {
+//     // box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+//     transform: translatey(0px);
+//   }
+//   50% {
+//     // box-shadow: 0 25px 15px 0px rgba(0,0,0,0.2);
+//     transform: translatey(-6px);
+//   }
+//   100% {
+//     // box-shadow: 0 5px 15px 0px rgba(0,0,0,0.6);
+//     transform: translatey(0px);
+//   }
+// }
+// .float-animation-effect {
+//   animation: float 6s ease-in-out infinite;
+// }
 
 .google-border {
   border-radius: 10px !important;

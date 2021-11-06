@@ -35,9 +35,7 @@
         </v-col>
         <v-col cols="7">
           <v-img
-            transition="scale-transition"
-            origin="center center"
-            class="float-animation-effect"
+            lazy-src="/images/undraw_developer.svg"
             src="/images/undraw_developer.svg"
             contain
             aspect-ratio="1"
