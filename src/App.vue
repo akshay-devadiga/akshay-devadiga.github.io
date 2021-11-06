@@ -1,8 +1,14 @@
 <template>
-  <v-app id="inspire">
-    <v-main>
+  <v-app id="inspire" :class="{ 'pa-0': $vuetify.breakpoint.smAndDown }">
+    <v-main :class="{ 'pa-0': $vuetify.breakpoint.smAndDown }">
       <v-content class="fill-height">
-        <v-container fluid class="fill-height pa-0 ma-0">
+        <v-container fluid v-if="$vuetify.breakpoint.smAndDown" class="fill-height pa-0 ma-0">
+          <v-card flat class="overflow-hidden mx-auto" style="min-width: 100%;" >
+              <mobile-content />
+              <bottom-navigation />
+          </v-card>
+        </v-container>
+        <v-container v-else fluid class="fill-height pa-0 ma-0">
           <v-row class="fill-height"
             ><v-col
               cols="4"
@@ -13,9 +19,16 @@
                   <sidebar />
                 </v-col>
               </v-row> </v-col
-            ><v-col cols="8" :style="{ background: isDetailsPage ? $vuetify.theme.defaults.light.secondary: 'white' }">
+            ><v-col
+              cols="8"
+              :style="{
+                background: isDetailsPage
+                  ? $vuetify.theme.defaults.light.secondary
+                  : 'white',
+              }"
+            >
               <v-row class="justify-center align-center fill-height">
-                <v-col cols="12" class="fill-height" >
+                <v-col cols="12" class="fill-height">
                   <main-content />
                 </v-col>
               </v-row> </v-col
@@ -33,7 +46,9 @@ import * as backgroundAnimationData from "./assets/background.json";
 // import Projects from "./components/Projects.vue";
 // import ReachOut from "./components/ReachOut.vue";
 import Sidebar from "./components/Sidebar.vue";
+import BottomNavigation from "./components/BottomNavigation.vue";
 import MainContent from "./components/MainContent.vue";
+import MobileContent from "./components/MainContent.vue";
 // import { VueAnime } from "vue-anime";
 // import { VueAnimeGroup } from "vue-anime";
 // import { VueAnimeTimeLine } from "vue-anime";
@@ -50,6 +65,8 @@ export default {
     // VueAnimeTimeLine,
     Sidebar,
     MainContent,
+    BottomNavigation,
+    MobileContent,
   },
   created() {
     console.log(this.$vuetify.breakpoint);
@@ -69,8 +86,8 @@ export default {
       return `${years} year and ${months} months`;
     },
     isDetailsPage() {
-      return this.$route.name=='details';
-    }
+      return this.$route.name == "details";
+    },
   },
   methods: {
     handleAnimation: function(anim) {

@@ -5,6 +5,18 @@
     max-width="500"
     @click="goToDetails"
   >
+    <v-row class="justify-center align-center"  v-if="$vuetify.breakpoint.smAndDown"> 
+        <v-col cols="8">
+          <v-img
+            transition="scale-transition"
+            origin="center center"
+            class="float-animation-effect"
+            src="/images/undraw_developer.svg"
+            contain
+            aspect-ratio="1"
+          ></v-img>
+        </v-col>
+      </v-row>
   <!-- :class="{ 'float-animation-effect': isArrowButtonClicked }" -->
     <v-list-item two-line>
       <v-list-item-content>
