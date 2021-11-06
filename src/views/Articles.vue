@@ -13,7 +13,6 @@
         </v-btn-toggle>
       </v-col>
     </v-row>
-    {{posts}}
     <v-row class="justify-start align-start fill-height">
       <v-col cols="12">
       <v-container
@@ -97,7 +96,7 @@
           :settings="settings"
         >
         <v-row class="align-start justify-start">
-           <v-col cols="6" v-for="i in 2" :key="i">
+           <v-col cols="6" v-for="favoriteArticle in favoriteArticles" :key="favoriteArticle">
             <v-card class="mx-auto" max-width="344" outlined>
               <v-list-item three-line>
                 <v-list-item-avatar tile size="80" color="secondary lighten-1"
@@ -107,9 +106,9 @@
                 >
                 <v-divider vertical class="my-3 py-3"></v-divider>
                 <v-list-item-content class="px-4">
-                  <div>Sat Jun 19 2021</div>
+                  <div> {{getHumanFormat(favoriteArticle.dateAdded)}}</div>
                   <p class="text-h6">
-                    How to create vuex modules
+                   {{favoriteArticle.title}}
                   </p>
                 </v-list-item-content>
               </v-list-item>
@@ -126,7 +125,7 @@
 <script>
 import VuePerfectScrollbar from "vue-perfect-scrollbar";
 import { getAllPostsFromHashNode } from "../helpers/hashnode";
-import { getAllPostsFromMedium } from "../helpers/medium";
+import favoriteArticles from "../json/favoriteArticles.json";
 import moment from "moment";
 export default {
   components: {
@@ -155,6 +154,7 @@ export default {
       posts: 0,
       hashnodePosts: [],
       isLoading: false,
+      favoriteArticles
     };
   },
 };
