@@ -6,7 +6,7 @@ branch - dist-deploy
 
 TODO 
    - [x] Setup vue App and deploy flow
-   - [ ] Work on design - figma - [skipped] 
+   - [x] Work on design - figma - [skipped] 
    - [x] Find inspirations and design rough layout
    - [x] Setup vuetify 
    - [x] Setup vue-lottie  
@@ -16,12 +16,12 @@ TODO
    - [x] Create vuetify layout structure
    - [x] Customize expansion panel
    - [x] Complete work on reach out feature - Take reference from old portfolio
-   - [ ] Research and try out multiple layout / designs for projects feature
-   - [ ] Work on and complete projects feature using dummy content
-   - [ ] Research and try out multiple layout / designs for timeline feature
-   - [ ] Work on and complete timeline feature using dummy content
-   - [ ] Create content for projects and timeline feature and get it reviewed
-   - [ ] Research and try out multiple layout / designs for mobile layout
-   - [ ] Work on and complete mobile layout / make it responsive
-   - [ ] Add the repo link in linkedin account
-   - [ ] Update resume and add resume download feature
+   - [x] Research and try out multiple layout / designs for projects feature
+   - [x] Work on and complete projects feature using dummy content
+   - [x] Research and try out multiple layout / designs for timeline feature
+   - [x] Work on and complete timeline feature using dummy content
+   - [x] Create content for projects and timeline feature and get it reviewed
+   - [x] Research and try out multiple layout / designs for mobile layout
+   - [x] Work on and complete mobile layout / make it responsive
+   - [x] Add the repo link in linkedin account
+   - [x] Update resume and add resume download feature
