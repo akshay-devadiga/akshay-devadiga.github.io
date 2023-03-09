@@ -1,27 +1,21 @@
-branch - main 
-  -All of the source code of the vue app resides here.
-  
-branch - dist-deploy
-  -Deploy branch for the /dist folder.
+# y
 
-TODO 
-   - [x] Setup vue App and deploy flow
-   - [x] Work on design - figma - [skipped] 
-   - [x] Find inspirations and design rough layout
-   - [x] Setup vuetify 
-   - [x] Setup vue-lottie  
-   - [x] Find and shortlist multiple motion designs 
-   - [x] Create a color pallete for the app
-   - [x] Customize motion designs
-   - [x] Create vuetify layout structure
-   - [x] Customize expansion panel
-   - [x] Complete work on reach out feature - Take reference from old portfolio
-   - [x] Research and try out multiple layout / designs for projects feature
-   - [x] Work on and complete projects feature using dummy content
-   - [x] Research and try out multiple layout / designs for timeline feature
-   - [x] Work on and complete timeline feature using dummy content
-   - [x] Create content for projects and timeline feature and get it reviewed
-   - [x] Research and try out multiple layout / designs for mobile layout
-   - [x] Work on and complete mobile layout / make it responsive
-   - [x] Add the repo link in linkedin account
-   - [x] Update resume and add resume download feature
+> y
+
+## Build Setup
+
+``` bash
+# install dependencies
+npm install
+
+# serve with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+
+# build for production and view the bundle analyzer report
+npm run build --report
+```
+
+For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
