@@ -16,6 +16,38 @@ export default {
   data() {
     return {
       Position,
+      test: [
+        {
+          id: '1',
+          type: 'input',
+          label: 'Experience',
+          type: 'input',
+          data: {
+            backgroundColor: '#51b848'
+          },
+          position: { x: 250, y: 1400 },
+          style: defaultNodeStyle
+        },
+
+        { 
+          id: '2', 
+          type: 'custom',
+          label: 'KS Hegde Medical Academy',
+          data: {
+            category: 'Healthcare',
+            backgroundColor: '#7a22b5',
+            image: '/images/kshema.webp',
+            year: '2017 - 2019',
+            parentPosition:'top'
+          },
+          parentNode: '5',
+          position: { x: 100, y: 100 },
+          style: { borderColor: '#7a22b5' } },
+        { id: '3', label: 'Node 3', position: { x: 400, y: 100 } },
+        { id: '4', label: 'Node 4', position: { x: 400, y: 200 } },
+        { id: 'e1-2', source: '1', target: '2', animated: true },
+        { id: 'e1-3', source: '1', target: '3' }
+      ],
       elements: [
         {
           id: 'e1-2',
@@ -36,7 +68,6 @@ export default {
         {
           id: '1',
           type: 'custom',
-          targetPosition: Position.Right,
           label: 'KS Hegde Medical Academy',
           data: {
             category: 'Healthcare',
@@ -45,8 +76,7 @@ export default {
             year: '2017 - 2019'
           },
           parentNode: '5',
-          position: { x: 0, y: 180 },
-          sourcePosition: Position.Top,
+          position: { x: 100, y: 100 },
           style: { borderColor: '#7a22b5' }
         },
 
@@ -61,7 +91,7 @@ export default {
             year: 'Aug 2019 - May 2022'
           },
           parentNode: '5',
-          position: { x: 250, y: 200 },
+        position: { x: 400, y: 100 },
           style: { borderColor: '#51b848' }
         },
         {
@@ -75,28 +105,18 @@ export default {
           },
           parentNode: '5',
           type: 'custom',
-          position: { x: 40, y: 360 },
+          position: { x: 700, y: 100 },
           style: { borderColor: '#fc4832' }
         },
-        //      {
-        //   id: '4',
-        //   label: 'Associate Product Engineer',
-        //   type: 'custom',
-        //   data: {
-        //     backgroundColor: '#51b848',
-        //   },
-        //   position: { x: 30, y: 400 },
-        //     style: { backgroundColor: '#51b848' }
-        // },
         {
           id: '5',
           label: 'Experience',
           type: 'input',
-          
+
           data: {
             backgroundColor: '#51b848'
           },
-          position: { x: 150, y: 100 },
+            position: { x: 250, y: 50 },
           style: defaultNodeStyle
         },
         {
@@ -110,54 +130,60 @@ export default {
 }
 </script>
 <template>
-    <VueFlow
-      v-model="elements"
-      :default-zoom="0.2"
-      :default-edge-options="{ type: 'smoothstep' }"
-      :default-viewport="{ zoom: 0.5 }"
-      :elevate-edges-on-select="true"
-      :fit-view-on-init="true"
-      style="height:100vh !important"
-    >
-      <template #node-custom="props">
-        <Handle
-          type="source"
-          :position="Position.Right"
-          :style="{ backgroundColor: '#00000', center: '10px' }"
-        />
+  <VueFlow
+    v-model="elements"
+    :default-zoom="0.2"
+    :default-viewport="{ zoom: 0.5 }"
+    :elevate-edges-on-select="true"
+    :fit-view-on-init="true"
+    style="height: 100vh !important"
+    class="interactionflow"
+  >
+    <template #node-custom="props">
+      <Handle
+        type="source"
+        :position="Position.Top"
+        :style="{ backgroundColor: '#00000', center: '10px' }"
+      />
 
-        <v-card max-width="250" class="pa-0" :style="{'border':`1px solid ${props.data.backgroundColor}`}">
-          <v-container fluid>
-            <v-row align="center" justify="space-between">
-              <v-col cols="8" class="pa-0">
-                <v-list class="pa-0">
-                  <v-list-item class="pa-0">
-                    <span class=" font-weight-bold" style="word-break:break-word; font-size:7px"> {{ props.label }}</span>
-                    <br />
-                    <span class="font-weight-light;" style="word-break:break-all; font-size:5px;">
-                      {{ props.data.category }}</span
-                    >
-                  </v-list-item>
-                </v-list>
-              </v-col>
-              <v-col cols="4" class="pa-0 ">
-                <v-list class="pa-0">
-                  <v-list-item class="pa-0 mr-4">
-                    <template v-slot:append>
-                      <v-avatar size="40" rounded="0">
-                        <v-img contain :src="props.data.image"></v-img>
-                      </v-avatar>
-                    </template>
-                  </v-list-item> </v-list
-              ></v-col>
-            </v-row>
-          </v-container>
-        </v-card>
-      </template>
+      <v-card
+        max-width="250"
+        class="pa-0"
+        :style="{ border: `1px solid ${props.data.backgroundColor}` }"
+      >
+        <v-container fluid>
+          <v-row align="center" justify="space-between">
+            <v-col cols="8" class="pa-0">
+              <v-list class="pa-0">
+                <v-list-item class="pa-0">
+                  <span class="font-weight-bold" style="word-break: break-word; font-size: 7px">
+                    {{ props.label }}</span
+                  >
+                  <br />
+                  <span class="font-weight-light;" style="word-break: break-all; font-size: 5px">
+                    {{ props.data.category }}</span
+                  >
+                </v-list-item>
+              </v-list>
+            </v-col>
+            <v-col cols="4" class="pa-0">
+              <v-list class="pa-0">
+                <v-list-item class="pa-0 mr-4">
+                  <template v-slot:append>
+                    <v-avatar size="40" rounded="0">
+                      <v-img contain :src="props.data.image"></v-img>
+                    </v-avatar>
+                  </template>
+                </v-list-item> </v-list
+            ></v-col>
+          </v-row>
+        </v-container>
+      </v-card>
+    </template>
 
-      <Controls />
-      <Background pattern-color="'#0000'" gap="25" />
-    </VueFlow>
+    <Controls />
+    <Background pattern-color="'#0000'" gap="25" />
+  </VueFlow>
 </template>
 <style>
 /* these are necessary styles for vue flow */

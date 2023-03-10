@@ -1,6 +1,6 @@
 <template>
     <v-container class="fill-height primary">
-      <v-row class="justify-center align-center" >
+      <!-- <v-row class="justify-center align-center" >
         <v-col cols="6" offset="1" v-for="sidebarOption in sidebarOptions" :key="sidebarOption.id">
           <v-btn color="white" class="d-block mx-2 grey--text sidebar-btn" @click="goToPage(sidebarOption.route)">
             <v-icon left dark color="secondary" style="font-size:27px">
@@ -9,7 +9,7 @@
             <span class="ml-2">{{sidebarOption.name}} </span>
           </v-btn>
         </v-col>
-      </v-row>
+      </v-row> -->
       <v-row class="justify-center align-center">
         <v-col cols="4" class="">
           <v-row class="justify-center align-center">
@@ -46,7 +46,7 @@ export default {
       socialOptions: [
         { id:1,icon: "mdi-linkedin" , link:"https://in.linkedin.com/in/akshay-devadiga-652687115" },
         { id:2,icon: "mdi-github", link:"https://github.com/akshay-devadiga" },
-        { id:3,icon: "mdi-whatsapp", link: "https://api.whatsapp.com/send?phone=+918105171418&text=Hi,%20I%20contacted%20you%20through%20your%20portfolio%20website." }
+        { id:3,icon: "mdi-whatsapp", link: "https://api.whatsapp.com/send?phone=+916361062209&text=Hi,%20I%20contacted%20you%20through%20your%20portfolio%20website." }
       ],
     };
   },
