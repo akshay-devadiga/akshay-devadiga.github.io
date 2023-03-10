@@ -26,7 +26,7 @@
         <!-- <v-list-item-subtitle class="accent--text"
                       >Creative Developer</v-list-item-subtitle
                     > -->
-        <v-list-item-subtitle class="accent--text"
+        <v-list-item-subtitle class="accent--text mt-3"
           >WEB DEV | FRONT-END ENGINEER | UX DESIGNER</v-list-item-subtitle
         >
       </v-list-item-content>
