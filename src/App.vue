@@ -1,5 +1,6 @@
 <template>
-  <v-app id="inspire" :class="{ 'pa-0': $vuetify.breakpoint.smAndDown }">
+  <div id="app">
+    <v-app id="inspire" :class="{ 'pa-0': $vuetify.breakpoint.smAndDown }">
     <v-main :class="{ 'pa-0': $vuetify.breakpoint.smAndDown }">
       <v-content class="fill-height">
         <v-container fluid v-if="$vuetify.breakpoint.smAndDown" class="fill-height pa-0 ma-0">
@@ -37,6 +38,7 @@
       </v-content>
     </v-main>
   </v-app>
+  </div>
 </template>
 <script>
 import * as animationData from "./assets/dev-at-work.json";
