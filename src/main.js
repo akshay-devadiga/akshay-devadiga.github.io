@@ -1,9 +1,11 @@
 import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify'
-import Lottie from "vue-lottie";
-import router from './router'
-Vue.component("lottie", Lottie);
+import lottie from "vue-lottie";
+import router from './router';
+
+// eslint-disable-next-line
+Vue.component("lottie", lottie);
 
 Vue.config.productionTip = false
 

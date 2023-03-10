@@ -1,7 +1,7 @@
-import DetailsCard from "./views/DetailsCard"
-import Experience from "./views/Experience"
-import Projects from "./views/Projects"
-import Articles from "./views/Articles"
+import DetailsCard from "./views/details-card"
+import Experience from "./views/experience"
+import Projects from "./views/projects"
+import articles from "./views/articles"
 import Router from 'vue-router'
 import Vue from 'vue'
 Vue.use(Router)
@@ -26,7 +26,7 @@ export default new Router({
       {
         path: '/articles',
         name: 'articles',
-        component: Articles
+        component: articles
       }
     ]
   })

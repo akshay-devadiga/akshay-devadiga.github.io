@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import HomeView from '../views/HomeView.vue'
 import DetailsCard from "../views/DetailsCard"
 import Experience from "../views/Experience"
 import Projects from "../views/Projects"

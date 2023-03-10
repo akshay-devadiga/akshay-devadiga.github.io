@@ -269,14 +269,10 @@
   </v-container>
 </template>
 <script>
-import VuePerfectScrollbar from "vue-perfect-scrollbar";
 import webProjects from "../json/webProjects.json";
 import graphicDesignProjects from "../json/graphicDesignProjects.json";
 import uxProjects from "../json/uxProjects.json";
 export default {
-  components: {
-    VuePerfectScrollbar,
-  },
   data() {
     return {
       projects: 0,

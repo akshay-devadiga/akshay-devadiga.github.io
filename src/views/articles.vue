@@ -104,14 +104,10 @@
   </v-container>
 </template>
 <script>
-import VuePerfectScrollbar from "vue-perfect-scrollbar";
 import { getAllPostsFromHashNode } from "../helpers/hashnode";
 import favoriteArticles from "../json/favoriteArticles.json";
 import moment from "moment";
 export default {
-  components: {
-    VuePerfectScrollbar,
-  },
   async created() {
     this.isLoading = true;
     this.hashnodePosts = await getAllPostsFromHashNode();
