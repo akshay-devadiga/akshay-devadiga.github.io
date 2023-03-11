@@ -76,7 +76,7 @@ export default {
             year: '2017 - 2019'
           },
           parentNode: '5',
-          position: { x: 100, y: 100 },
+          position: { x: -250, y: 100 },
           style: { borderColor: '#7a22b5' }
         },
 
@@ -91,7 +91,7 @@ export default {
             year: 'Aug 2019 - May 2022'
           },
           parentNode: '5',
-        position: { x: 400, y: 100 },
+        position: { x: 0, y: 100 },
           style: { borderColor: '#51b848' }
         },
         {
@@ -105,7 +105,7 @@ export default {
           },
           parentNode: '5',
           type: 'custom',
-          position: { x: 700, y: 100 },
+          position: { x: 250, y: 100 },
           style: { borderColor: '#fc4832' }
         },
         {
@@ -118,12 +118,19 @@ export default {
           },
             position: { x: 250, y: 50 },
           style: defaultNodeStyle
-        },
+        },     
+        
         {
-          id: 'e2-5',
-          source: '5',
-          target: '1'
-        }
+          id: '6',
+          label: 'Case Studies',
+          type: 'input',
+          data: {
+            backgroundColor: '#51b848'
+          },
+            position: { x: 50, y: 50 },
+          style: defaultNodeStyle
+        },
+     
       ]
     }
   }
@@ -132,7 +139,7 @@ export default {
 <template>
   <VueFlow
     v-model="elements"
-    :default-zoom="0.2"
+    :default-zoom="10"
     :default-viewport="{ zoom: 0.5 }"
     :elevate-edges-on-select="true"
     :fit-view-on-init="true"
@@ -148,6 +155,7 @@ export default {
 
       <v-card
         max-width="250"
+        max-height="100"
         class="pa-0"
         :style="{ border: `1px solid ${props.data.backgroundColor}` }"
       >
@@ -156,12 +164,11 @@ export default {
             <v-col cols="8" class="pa-0">
               <v-list class="pa-0">
                 <v-list-item class="pa-0">
-                  <span class="font-weight-bold" style="word-break: break-word; font-size: 7px">
-                    {{ props.label }}</span
+                  <p class="font-weight-bold" style="word-break: break-word; font-size: 7px">
+                    {{ props.label }}</p
                   >
-                  <br />
-                  <span class="font-weight-light;" style="word-break: break-all; font-size: 5px">
-                    {{ props.data.category }}</span
+                  <p class="font-weight-light;" style="word-break: break-all; font-size: 5px">
+                    {{ props.data.category }}</p
                   >
                 </v-list-item>
               </v-list>
@@ -182,7 +189,7 @@ export default {
     </template>
 
     <Controls />
-    <Background pattern-color="'#0000'" gap="25" />
+    <Background pattern-color="'#62ADF4'" />
   </VueFlow>
 </template>
 <style>
