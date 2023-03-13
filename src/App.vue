@@ -10,8 +10,8 @@
         <v-container class="fill-height" fluid>
           <v-row>
           <v-col cols="12">
-              <v-row class="justify-center align-center fill-height">
-                <v-col cols="12" class="fill-height">
+              <v-row class="justify-center align-center">
+                <v-col cols="12">
                   <AboutView style="width:90vw" />
                 </v-col>
               </v-row> </v-col

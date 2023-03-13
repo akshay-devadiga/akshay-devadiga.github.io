@@ -137,14 +137,10 @@ export default {
 }
 </script>
 <template>
-  <VueFlow
+<v-container class="pa-0 ma-0" fluid style="height:100vh; width:80vw"><VueFlow
     v-model="elements"
-    :default-zoom="10"
-    :default-viewport="{ zoom: 0.5 }"
+    :default-viewport="{ zoom: 1.2 }"
     :elevate-edges-on-select="true"
-    :fit-view-on-init="true"
-    style="height: 100vh !important"
-    class="interactionflow"
   >
     <template #node-custom="props">
       <Handle
@@ -170,6 +166,9 @@ export default {
                   <p class="font-weight-light;" style="word-break: break-all; font-size: 5px">
                     {{ props.data.category }}</p
                   >
+                     <p style="word-break: break-all; font-size: 4px">
+                    {{ props.data.year }}</p
+                  >
                 </v-list-item>
               </v-list>
             </v-col>
@@ -190,7 +189,8 @@ export default {
 
     <Controls />
     <Background pattern-color="'#62ADF4'" />
-  </VueFlow>
+  </VueFlow> </v-container>
+  
 </template>
 <style>
 /* these are necessary styles for vue flow */
