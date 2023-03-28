@@ -1,38 +1,17 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import DetailsCard from "../views/DetailsCard"
-import Experience from "../views/Experience"
-import Projects from "../views/Projects"
-import Articles from "../views/Articles"
-Vue.use(VueRouter)
+import { createRouter, createWebHistory } from 'vue-router'
 
-const routes = [
-  {
-    path: '/',
-    name: 'details',
-    component: DetailsCard
-  },
-  {
-    path: '/experience',
-    name: 'experience',
-    component: Experience
-  },
-  {
-    path: '/projects',
-    name: 'projects',
-    component: Projects
-  },
-  {
-    path: '/articles',
-    name: 'articles',
-    component: Articles
-  }
-]
-
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
+const router = createRouter({
+  history: createWebHistory(import.meta.env.BASE_URL),
+  routes: [
+    {
+      path: '/about',
+      name: 'about',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/AboutView.vue')
+    }
+  ]
 })
 
 export default router
