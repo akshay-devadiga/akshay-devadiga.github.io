@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@braks/vue-flow": "^0.4.41",
+    "@gtm-support/vue-gtm": "^2.0.0",
     "@vue-flow/background": "^1.0.5",
     "@vue-flow/controls": "^1.0.4",
     "@vue-flow/core": "^1.16.2",
