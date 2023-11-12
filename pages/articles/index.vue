@@ -1,6 +1,6 @@
 <template>
     <div>
-Blog Index page
+Articles Index page
     </div>
 </template>
 
