@@ -40,30 +40,9 @@
           </v-row>
           <v-row justify="space-around">
             <v-col
-              v-for="option in options"
-              :key="option"
-              class="d-flex child-flex pa-12 ma-7"
-              cols="3"
+              cols="12"
             >
-              <v-img
-                :src="option.src"
-                :lazy-src="option.src"
-                contain
-                style="cursor: pointer"
-              >
-                <template v-slot:placeholder>
-                  <v-row
-                    class="fill-height ma-0"
-                    align="center"
-                    justify="center"
-                  >
-                    <v-progress-circular
-                      indeterminate
-                      color="grey-lighten-5"
-                    ></v-progress-circular>
-                  </v-row>
-                </template>
-              </v-img>
+                <router-view/>
             </v-col>
           </v-row>
         </v-container>
@@ -71,17 +50,6 @@
     </v-main>
   </v-layout>
 </template>
-<script setup>
-import { ref } from "vue";
-
-const options = ref([
-  { id: 1, src: "options/option-1.svg" },
-  { id: 2, src: "/options/option-2.svg" },
-  { id: 3, src: "/options/option-3.svg" },
-  { id: 4, src: "/options/option-4.svg" },
-  { id: 5, src: "/options/option-5.svg" },
-]);
-</script>
 
 <!-- https://www.figma.com/file/2YGLcY3IzjIeRwUFW9p0eH/Portfolio-Website?type=design&node-id=0-1&mode=design&t=fNwDHyim1UznwA8o-0 -->
 <style lang="scss" scoped>
@@ -162,6 +130,6 @@ const options = ref([
     radial-gradient(rgb(0, 0, 0) 10%, transparent 10%);
   background-position: 0px 0px, 4px 4px;
   background-size: 8px 8px;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(220, 219, 219);
 }
 </style>
