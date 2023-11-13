@@ -1,14 +1,11 @@
 <template>
   <v-layout>
     <app-header />
-    <v-main class="align-center justify-center flex-1-1-100">
-      <v-container fluid>
+    <v-main class="align-center justify-center flex-1-1-100 app-content">
+      <v-container class="pa-0" fluid>
         <v-row>
           <v-col cols="12">
-            <v-card> <slot /></v-card>
-          </v-col>
-             <v-col cols="12">
-            <v-card> <app-footer /></v-card>
+            <v-card flat class="pa-0"> <slot /></v-card>
           </v-col>
         </v-row>
       </v-container>
@@ -17,11 +14,8 @@
 </template>
 
 <style scoped>
-.default {
-  border: 1px solid #b9e39e;
-  padding: 1rem;
-  position: relative;
-  background-color: #b8e39e87;
+.app-content {
+  background-color: #f5f5f5;
 }
 .default::before {
   position: absolute;

@@ -1,17 +1,17 @@
 <template>
-  <v-app-bar flat>
     <v-container fluid class="pa-0 mt-8">
       <v-row align="center">
         <v-col cols="12">
+         <v-divider inset/>
           <v-progress-linear
             :model-value="progressValue"
             color="#91d5ff"
             height="10"
           ></v-progress-linear>
+           <v-divider inset/>
         </v-col>
       </v-row>
     </v-container>
-  </v-app-bar>
 </template>
 <script setup>
 defineProps({

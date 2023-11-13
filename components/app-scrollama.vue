@@ -80,7 +80,7 @@ onUpdated(() => {
 </script>
 
 <template>
-    <div ref="parent">
+    <div ref="parent" class="v-row align-center justify-center">
         <slot></slot>
     </div>
 </template>
