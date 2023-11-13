@@ -1,15 +1,19 @@
 <template>
-  <div class="default">
-    <nav>
-      <NuxtLink to="/"> Articles </NuxtLink>
-    </nav>
-    <div>
-      <slot />
-    </div>
-  <footer>
-    This is footer
-  </footer>
-  </div>
+  <v-layout>
+    <app-header />
+    <v-main class="align-center justify-center flex-1-1-100">
+      <v-container fluid>
+        <v-row>
+          <v-col cols="12">
+            <v-card> <slot /></v-card>
+          </v-col>
+             <v-col cols="12">
+            <v-card> <app-footer /></v-card>
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-layout>
 </template>
 
 <style scoped>
