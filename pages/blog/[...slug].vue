@@ -1,5 +1,9 @@
+<script setup>
+const route = useRoute()
+const { data } = await useAsyncData('blog', () => queryContent(`blog/${route.params.slug[0]}`).findOne())
+</script>
 <template>
-  <main>
-    <ContentDoc />
-  </main>
+<div> 
+  <ContentRenderer :value="data" />
+  </div>
 </template>

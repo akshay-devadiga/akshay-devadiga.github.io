@@ -8,11 +8,13 @@
             :size="24"
             image-alt-text="About"
             button-text="About"
+            to="/about"
           />
           <app-button
             url="images/navigation/projects.svg"
             :size="24"
             image-alt-text="Projects"
+            to="/projects"
             button-text="Projects"
           />
           <v-spacer></v-spacer>
@@ -34,18 +36,21 @@
           <app-button
             url="images/navigation/articles.svg"
             :size="24"
+            to="/articles"
             image-alt-text="Articles"
             button-text="Articles"
           />
           <app-button
             url="images/navigation/blog.svg"
             :size="24"
+            to="/blog"
             image-alt-text="Blog"
             button-text="Blog"
           />
           <app-button
             url="images/navigation/resume.svg"
             :size="24"
+            to="/resume"
             image-alt-text="Resume"
             button-text="Resume"
           />

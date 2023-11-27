@@ -1,5 +1,5 @@
 <template>
-  <v-btn>
+  <v-btn :to="to">
     <template v-slot:prepend>
       <v-avatar color="transparent" rounded="0">
         <v-img :src="url" :height="size" contain :alt="imageAltText"></v-img>
@@ -29,6 +29,10 @@ defineProps({
   hideButtonText: {
     type: Boolean,
     default: false,
+  },
+  to: {
+    type: String,
+    default: "",
   },
 });
 </script>

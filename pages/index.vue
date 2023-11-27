@@ -7,8 +7,8 @@
     <v-spacer class="my-10" />
     <v-card flat class="py-10 my-10" />
     <v-row justify="center" class="mt-10">
-      <v-col cols="3" class="about__menu">
-        <v-card class="mx-auto about__menu__card py-4">
+      <v-col cols="3" class="about__menu elevation-2">
+        <v-card class="mx-auto about__menu__card" flat>
           <!-- TODO: Support gradient in v2 :style="{ background: gradientBackground }" -->
           <v-row justify="center">
             <v-col cols="auto">

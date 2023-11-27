@@ -1,16 +1,14 @@
 <template>
-  <v-card class="pa-4">
+  <v-card class="pa-4" @click="goToDetails">
     <v-container fluid>
       <v-row justify="space-between">
         <v-col cols="auto" class="py-0">
-          <v-chip class="mb-2 about__content__under-deck__chip" size="small">
-            Dev
-          </v-chip>
+          <v-chip class="mb-2 article__chip" size="small"> Dev </v-chip>
         </v-col>
         <v-col cols="auto" class="py-0">
           <v-avatar size="20" rounded="0">
             <v-img v-if="isBlog" src="images/blog.svg" contain />
-             <v-img v-else src="images/article.svg" contain />
+            <v-img v-else src="images/article.svg" contain />
           </v-avatar>
         </v-col>
       </v-row>
@@ -24,9 +22,9 @@
           <p class="text-body-2">{{ title }}</p>
         </v-col>
       </v-row>
-        <v-row align="center">
+      <v-row align="center">
         <v-col cols="12" class="pb-0 pt-1">
-          <p class="text-caption">April 9,2021 · 1 minute  </p>
+          <p class="text-caption">April 9,2021 · 1 minute</p>
         </v-col>
       </v-row>
     </v-container>
@@ -47,7 +45,7 @@
   </v-card>
 </template>
 <script setup>
-import {computed} from "vue"
+import { computed } from "vue";
 
 const props = defineProps({
   url: {
@@ -62,6 +60,29 @@ const props = defineProps({
     type: String,
     default: "blog",
   },
+  to: {
+    type: String,
+    default: "blog",
+  },
 });
-const isBlog = computed(()=>props.type==='blog')
+const isBlog = computed(() => props.type === "blog");
+function goToDetails() {
+  navigateTo(props.to);
+}
 </script>
+<style lang="scss" scoped>
+.article {
+  &__chip {
+    border-radius: 12px;
+    border: 3px solid #91d5ff;
+    background: #000;
+    color: #ffff;
+    font-family: Inter;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 19px;
+    text-transform: uppercase;
+  }
+}
+</style>
