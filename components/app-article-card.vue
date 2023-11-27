@@ -1,9 +1,9 @@
 <template>
-  <v-card class="pa-4" @click="goToDetails">
-    <v-container fluid>
+  <v-card class="pa-1 article" @click="goToDetails">
+    <v-container fluid class="article__container py-6">
       <v-row justify="space-between">
         <v-col cols="auto" class="py-0">
-          <v-chip class="mb-2 article__chip" size="small"> Dev </v-chip>
+          <v-chip class="mb-2 article__container__chip" size="small"> Dev </v-chip>
         </v-col>
         <v-col cols="auto" class="py-0">
           <v-avatar size="20" rounded="0">
@@ -14,12 +14,12 @@
       </v-row>
       <v-row align="center">
         <v-col cols="12" class="py-0">
-          <h4>Software architecture in under a minute</h4>
+          <h4>{{ title }}</h4>
         </v-col>
       </v-row>
       <v-row align="center">
         <v-col cols="12" class="pb-0 pt-1">
-          <p class="text-body-2">{{ title }}</p>
+          <p class="text-body-2">{{ description }}</p>
         </v-col>
       </v-row>
       <v-row align="center">
@@ -56,6 +56,10 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  description: {
+    type: String,
+    default: "",
+  },
   type: {
     type: String,
     default: "blog",
@@ -72,7 +76,14 @@ function goToDetails() {
 </script>
 <style lang="scss" scoped>
 .article {
-  &__chip {
+  border: 1px solid #DDDEE0;
+  border-radius: 12px;
+  background: #91d5ff;
+   &__container{
+      border: 1px solid #DDDEE0;
+      border-radius: 8px;
+      background: white;
+ &__chip {
     border-radius: 12px;
     border: 3px solid #91d5ff;
     background: #000;
@@ -84,5 +95,7 @@ function goToDetails() {
     line-height: 19px;
     text-transform: uppercase;
   }
+   }
+ 
 }
 </style>

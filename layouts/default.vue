@@ -1,15 +1,23 @@
 <template>
   <v-layout>
-    <app-header />
-    <v-main class="align-center justify-center flex-1-1-100 app-content">
-      <v-container class="pa-0" fluid>
-        <v-row>
-          <v-col cols="12">
-            <v-card flat class="pa-0"> <slot /></v-card>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-main>
+    <v-container class="app-content px-0" fluid>
+      <v-row>
+        <app-header />
+      </v-row>
+      <v-row>
+        <v-main class="align-center justify-center app-content">
+          <v-container fluid class="app-content" >
+            <v-row>
+              <v-col cols="12">
+                <v-card flat class="app-content" >
+                  <slot
+                /></v-card>
+              </v-col>
+            </v-row>
+          </v-container>
+        </v-main>
+      </v-row>
+    </v-container>
   </v-layout>
 </template>
 

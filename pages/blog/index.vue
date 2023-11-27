@@ -7,8 +7,7 @@
           :key="blog.title"
           :cols="4"
         >
-        {{blog}}
-          <app-article-card :to="blog._path" :url="''" :title="blog.title" :type="'blog'" />
+          <app-article-card :to="blog._path" :url="''" :description="blog.description" :title="blog.title" :type="'blog'" />
         </v-col>
       </v-row>
     </v-container>

@@ -2,17 +2,17 @@
   <v-container
     fluid
     class="pa-0 about"
-    style="max-height: 90vh; overflow: auto"
+    style="max-height: 80vh; overflow: auto"
   >
-    <v-spacer class="my-10" />
-    <v-card flat class="py-10 my-10" />
-    <v-row justify="center" class="mt-10">
-      <v-col cols="3" class="about__menu elevation-2">
-        <v-card class="mx-auto about__menu__card" flat>
+  <v-row justify="center">
+  <v-col cols="11"> 
+    <v-row justify="center">
+      <v-col cols="3" class="about__menu">
+        <v-card class="mx-auto about__menu__card py-10">
           <!-- TODO: Support gradient in v2 :style="{ background: gradientBackground }" -->
           <v-row justify="center">
             <v-col cols="auto">
-              <v-avatar size="200">
+              <v-avatar size="160">
                 <v-img src="images/about/menu-illustration.svg" contain />
               </v-avatar>
             </v-col>
@@ -25,7 +25,7 @@
               />
             </v-col>
           </v-row>
-          <v-row justify="center" class="mt-4">
+          <v-row justify="center">
             <v-col cols="auto">
               <app-about-menu
                 :list="menuItems"
@@ -364,7 +364,10 @@
           </v-container>
         </v-card>
       </v-col>
-      <v-col cols="12" align-self="center">
+  
+    </v-row>
+    </v-col>
+        <v-col cols="12" align-self="center">
         <v-avatar size="340">
           <v-img src="images/about/submarine.svg" contain />
         </v-avatar>
@@ -372,7 +375,7 @@
       <v-col cols="12">
         <app-footer />
       </v-col>
-    </v-row>
+     </v-row>
   </v-container>
 </template>
 <script setup>
@@ -725,43 +728,6 @@ const hexToRgb = (hex) => {
 };
 </script>
 <style lang="scss">
-.main {
-  display: flex;
-  .main__graphic {
-    flex: 1;
-    height: 40vh;
-    top: 10vh;
-    position: sticky;
-  }
-  .main__scrollama {
-    flex: 1;
-  }
-}
-
-// your elements styles
-.main__graphic {
-  height: 40vh;
-  margin: 0 3rem;
-  border: 1px solid #ccc;
-  background-color: #eee;
-  font-size: 10rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.step {
-  padding: 20vh 0;
-  margin: 0 3rem;
-  margin-bottom: 10vh;
-  background-color: beige;
-  border: 1px solid #ccc;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  &:last-child {
-    margin-bottom: 0;
-  }
-}
 .about {
   &__menu {
     &__card {

@@ -1,5 +1,5 @@
 <template>
-  <v-btn :to="to">
+  <v-btn :to="to" :flat="flat" :v-ripple="false">
     <template v-slot:prepend>
       <v-avatar color="transparent" rounded="0">
         <v-img :src="url" :height="size" contain :alt="imageAltText"></v-img>
@@ -33,6 +33,10 @@ defineProps({
   to: {
     type: String,
     default: "",
+  },
+  flat: {
+    type: Boolean,
+    default: false,
   },
 });
 </script>
