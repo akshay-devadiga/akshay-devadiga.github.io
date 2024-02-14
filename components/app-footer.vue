@@ -1,20 +1,38 @@
 <template>
-  <v-footer class="pa-0">
-    <div class="bg-teal d-flex w-100 align-center pa-4">
-      <strong>Get connected with us on social networks!</strong>
-
-      <v-spacer></v-spacer>
-    </div>
-    <div class="pa-4 bg-black text-center w-100">
-      {{ new Date().getFullYear() }} — <strong>Vuetify</strong>
-    </div>
+  <v-footer class="pa-0 bg-transparent">
+    <v-container fluid>
+    <v-row align="center" justify="center">
+     <v-col cols="auto"> Built using &nbsp;<strong>Vuetify</strong> </v-col>
+      <v-col cols="auto"> 
+        <app-button
+        url="images/mail.svg"
+        :size="20"
+        image-alt-text="Mail"
+        to="/projects"
+        hide-button-text
+        flat
+         class="bg-transparent px-0"
+      />
+        <app-button
+        url="images/linkedin.svg"
+        :size="20"
+        image-alt-text="LinkedIn"
+        to="/projects"
+        hide-button-text
+        flat
+         class="bg-transparent px-0"
+      />
+        <app-button
+        url="images/github.svg"
+        :size="20"
+        image-alt-text="Mail"
+        to="/projects"
+        :hide-button-text="true"
+        flat
+        class="bg-transparent px-0"
+      />
+      </v-col>
+    </v-row>
+    </v-container>
   </v-footer>
 </template>
-<!-- <v-btn
-        v-for="icon in icons"
-        :key="icon"
-        class="mx-4"
-        :icon="icon"
-        variant="plain"
-        size="small"
-      ></v-btn> -->

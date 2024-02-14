@@ -1,24 +1,23 @@
 <template>
   <v-container
     fluid
-    class="pa-0 about"
-    style="max-height: 80vh; overflow: auto"
+    class="about"
   >
   <v-row justify="center">
   <v-col cols="11"> 
-    <v-row justify="center">
+    <v-row justify="start">
       <v-col cols="3" class="about__menu">
-        <v-card class="mx-auto about__menu__card py-10">
+        <v-card class="mx-auto about__menu__card" flat>
           <!-- TODO: Support gradient in v2 :style="{ background: gradientBackground }" -->
           <v-row justify="center">
-            <v-col cols="auto">
+            <v-col cols="auto" class="pt-6 px-6">
               <v-avatar size="160">
                 <v-img src="images/about/menu-illustration.svg" contain />
               </v-avatar>
             </v-col>
           </v-row>
           <v-row justify="center">
-            <v-col cols="10">
+            <v-col cols="10" class="pt-0">
               <app-sticky-progress-bar
                 :progressValue="progressValue"
                 class="mx-auto"
@@ -30,6 +29,7 @@
               <app-about-menu
                 :list="menuItems"
                 :activeItemIndex="Number(currStep)"
+                @onItemClick="onItemClickHandler"
               />
             </v-col>
           </v-row>
@@ -45,20 +45,15 @@
                   @step-enter="({ element }) => setCurrStep(element)"
                   @step-progress="({ element }) => handleStepProgress(element)"
                 >
-                  <v-col cols="auto" class="py-0">
+                  <v-col cols="auto" class="py-0 pl-0 pr-5 mr-10">
                     <v-avatar
-                      size="70"
+                      size="120"
                       rounded="0"
-                      style="position: relative; z-index: 2 !important"
+                      style="height: 80px;"
                     >
                       <v-img
-                        src="images/about/shakle.svg"
+                        src="images/about/shakleset.svg"
                         contain
-                        style="
-                          position: absolute;
-                          bottom: -9px;
-                          z-index: 12 !important;
-                        "
                       />
                     </v-avatar>
                   </v-col>
@@ -68,7 +63,7 @@
                     style="position: relative; z-index: 2"
                   >
                     <v-card class="pa-0 text-center" flat>
-                      <h1>Quality is not an act it is a habit - Aristotle</h1>
+                      <h1 class="text-h6">Quality is not an act it is a habit - Aristotle</h1>
                     </v-card>
                   </v-col>
                   <v-col cols="auto" class="py-0">
@@ -80,11 +75,11 @@
                     cols="12"
                     data-step-no="1"
                     class="about__content__under-deck"
+                    id="whoami"
                   >
                     <v-card class="pa-10" flat>
                       <p>Hey! I am Akshay</p>
                       <br />
-
                       <p>Frontend engineer based in Bengaluru, India.</p>
                       <p>
                         I specialize in developing user-centric, accessible and
@@ -114,6 +109,7 @@
                     cols="12"
                     data-step-no="2"
                     class="about__content__under-deck"
+                    id="techstack"
                   >
                     <v-card class="px-10 pb-10 pt-4" flat>
                       <v-chip
@@ -186,6 +182,7 @@
                     cols="12"
                     data-step-no="3"
                     class="about__content__under-deck"
+                    id="work"
                   >
                     <v-card class="px-10 pb-10 pt-4" flat>
                       <v-chip
@@ -211,7 +208,7 @@
                             </v-row>
                           </v-col>
                           <v-divider vertical class="mx-4" v-if="!smAndDown" />
-                          <v-col cols="5">
+                          <v-col cols="7">
                             <p>Previously worked At:</p>
                             <v-row justify="start" align="center" class="my-0">
                               <v-col
@@ -243,6 +240,7 @@
                     cols="12"
                     data-step-no="4"
                     class="about__content__under-deck"
+                    id="honors"
                   >
                     <v-card class="px-10 pb-10 pt-4" flat>
                       <v-chip
@@ -273,6 +271,7 @@
                     cols="12"
                     data-step-no="5"
                     class="about__content__under-deck"
+                    id="othercaps"
                   >
                     <v-card class="px-10 pb-10 pt-4" flat>
                       <v-chip
@@ -331,6 +330,7 @@
                     cols="12"
                     data-step-no="6"
                     class="about__content__under-deck"
+                    id="recents"
                   >
                     <v-card class="px-10 pb-10 pt-4" flat>
                       <v-chip
@@ -390,7 +390,7 @@ const recents = ref([
   {
     title:
       "I typically steer clear of certification exams, but my perspective shifted slightly when Evan you  and  the Vue School offered one, This prompted me to reconsider, ultimately leading me to decide to take the exam.",
-    url: "images/about/vuejs-developer-certificate.svg",
+    url: "images/about/hackathon.svg",
     flex: 8,
     type:'blog'
   },
@@ -412,7 +412,7 @@ const certifications = ref([
   {
     title:
       "DeltaX Hackday 2022: Teamed up with Ravi Nath Yadav, Asim Nath, Nikhil Chohan to develop a training app for DeltaX, winning the participants choice award.",
-    url: "images/about/vuejs-developer-certificate.svg",
+    url: "images/about/hackathon.svg",
     flex: 6,
   },
 ]);
@@ -638,7 +638,7 @@ const previouslyWorkedAt = ref([
     url: "images/about/experience/nitte-kshema.svg",
     imageAltText: "Nitte Kshema",
     id: "kshema",
-    size: 200,
+    size: 280,
   },
 ]);
 
@@ -648,36 +648,42 @@ const menuItems = ref([
     url: "images/about/whoami.svg",
     imageAltText: "Who am i",
     buttonText: "Who am i",
+    targetId:"whoami"
   },
   {
     id: 2,
     url: "images/about/tech-stack.svg",
     imageAltText: "Tech Stack",
     buttonText: "Tech Stack",
+    targetId:"techstack"
   },
   {
     id: 3,
     url: "images/about/work.svg",
     imageAltText: "Work",
     buttonText: "Work",
+    targetId:"work"
   },
   {
     id: 4,
     url: "images/about/honors.svg",
     imageAltText: "Honors",
     buttonText: "Honors",
+    targetId:"honors"
   },
   {
     id: 5,
     url: "images/about/other-caps.svg",
     imageAltText: "Other Caps",
     buttonText: "Other Caps",
+    targetId:"othercaps"
   },
   {
     id: 6,
     url: "images/about/recents.svg",
     imageAltText: "Recents",
     buttonText: "Recents",
+    targetId:"recents"
   },
 ]);
 function setCurrStep(element) {
@@ -726,11 +732,18 @@ const hexToRgb = (hex) => {
   const b = bigint & 255;
   return { r, g, b };
 };
+const onItemClickHandler = (targetId) =>{
+    const element = document.getElementById(targetId);
+    element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
 </script>
 <style lang="scss">
 .about {
+  max-height: 100vh; 
+  overflow: auto;
   &__menu {
     &__card {
+      border-radius: 25px;
       position: sticky;
       top: 2rem;
     }

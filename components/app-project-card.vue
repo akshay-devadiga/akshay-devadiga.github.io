@@ -1,5 +1,5 @@
 <template>
-  <v-card class="project" height="300" v-if="isPrototype">
+  <v-card class="project" height="300" v-if="isPrototype" flat>
     <v-img
       :src="imageUrl"
       class="align-end"
@@ -7,7 +7,7 @@
       height="250px"
       cover
     >
-      <v-card color="transparent" class="project__prototype-container">
+      <v-card color="transparent" class="project__prototype-container" flat>
         <div class="project__prototype-container__header">
           <v-container fluid>
             <v-row justify="end">
@@ -54,7 +54,7 @@
       <v-spacer></v-spacer>
     </v-card-actions>
   </v-card>
-  <v-card class="project" height="300" v-else>
+  <v-card class="project" height="300" v-else flat>
     <v-img
       :src="imageUrl"
       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"

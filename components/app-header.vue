@@ -17,8 +17,7 @@
         button-text="Projects"
         flat
       />
-      <v-spacer></v-spacer>
-      <v-spacer></v-spacer>
+       <v-spacer></v-spacer>
       <div class="app-header__nav-bar__center-container">
         <v-card
           class="ma-0 pa-0 app-header__nav-bar__center-container__logo"
@@ -48,14 +47,7 @@
         button-text="Blog"
         flat
       />
-      <app-button
-        url="images/navigation/resume.svg"
-        :size="24"
-        @click="showResume"
-        image-alt-text="Resume"
-        button-text="Resume"
-        flat
-      />
+    
     </v-row>
   </v-container>
 </template>

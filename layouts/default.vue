@@ -1,6 +1,6 @@
 <template>
   <v-layout>
-    <v-container class="app-content px-0" fluid>
+    <v-container class="app-content" fluid>
       <v-row>
         <app-header />
       </v-row>
@@ -8,10 +8,12 @@
         <v-main class="align-center justify-center app-content">
           <v-container fluid class="app-content" >
             <v-row>
-              <v-col cols="12">
+              <v-col cols="12" class="pa-0">
                 <v-card flat class="app-content" >
                   <slot
-                /></v-card>
+                />
+                  
+                </v-card>
               </v-col>
             </v-row>
           </v-container>

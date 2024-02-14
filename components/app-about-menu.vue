@@ -1,5 +1,5 @@
 <template>
-  <v-card flat color="transparent" class="mx-auto pa-2 app-about-menu">
+  <v-card flat color="transparent" class="mx-auto pa-1 app-about-menu">
     <v-list bg-color="transparent" class="app-about-menu__list">
       <v-list-item
         v-for="(item) in list"
@@ -9,7 +9,7 @@
         active-class="app-about-menu__list__item__active"
         rounded="xl"
         :active="activeItem === item.id"
-        @click="onItemClick(item.id)"
+        @click="onItemClick(item)"
       >
         <template v-slot:prepend>
           <v-avatar color="transparent" rounded="0">
@@ -27,6 +27,7 @@
   </v-card>
 </template>
 <script setup>
+const emit = defineEmits(['onItemClick'])
 const props = defineProps({
   list: {
     type: Array,
@@ -46,9 +47,10 @@ const isItemClicked = ref(false);
 const selectedItemIndex = ref(props.activeItemIndex);
 const activeItem = computed(()=>Number(isItemClicked.value? selectedItemIndex.value :props.activeItemIndex))
 
-function onItemClick(index){
+function onItemClick(payload){
  isItemClicked.value = true;
- selectedItemIndex.value = index
+ selectedItemIndex.value = payload.id
+ emit('onItemClick',payload.targetId)
 }
 </script>
 <style lang="scss" scoped>
@@ -60,6 +62,7 @@ function onItemClick(index){
     &__item {
       border-radius: 20px;
       background: #e7e7e7;
+      padding: 0px;
       &__active {
         border: 3px solid #91d5ff;
         font-weight: 700 !important;

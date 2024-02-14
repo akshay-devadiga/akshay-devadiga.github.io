@@ -1,12 +1,15 @@
 <template>
   <v-card>
+  <div class="px-2 pt-2">
     <v-img
       :src="url"
-      class="align-end pa-2"
+      class="align-end"
       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+      height="200px"
       contain
     >
     </v-img>
+  </div>
 
     <v-sheet class="pa-2">
       <v-container class="bg-grey-lighten-2" fluid>
