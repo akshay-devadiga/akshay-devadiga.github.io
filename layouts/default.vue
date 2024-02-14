@@ -1,8 +1,8 @@
 <template>
   <v-layout>
     <v-container class="app-content" fluid>
-      <v-row>
-        <app-header />
+      <v-row v-if="$vuetify.display.mdAndUp">
+        <app-header/>
       </v-row>
       <v-row>
         <v-main class="align-center justify-center app-content">
@@ -11,18 +11,19 @@
               <v-col cols="12" class="pa-0">
                 <v-card flat class="app-content" >
                   <slot
-                />
-                  
+                />      
                 </v-card>
               </v-col>
             </v-row>
           </v-container>
         </v-main>
       </v-row>
+      <row  v-if="$vuetify.display.smAndDown"> 
+     <app-navigation/>
+      </row>
     </v-container>
   </v-layout>
-</template>
-
+</template>\
 <style scoped>
 .app-content {
   background-color: #f5f5f5;

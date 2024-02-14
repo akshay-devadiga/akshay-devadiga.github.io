@@ -1,11 +1,13 @@
-<template>
+ 
+ <template>
   <v-container fluid class="mt-9 app-header__nav-bar px-12 py-2">
     <v-row align="center">
-      <app-button
+     <v-bottom-navigation>
+    <app-button
         url="images/navigation/about.svg"
         :size="24"
         image-alt-text="About"
-        button-text="About"
+        button-text=""
         to="/"
         flat
       />
@@ -14,29 +16,16 @@
         :size="24"
         image-alt-text="Projects"
         to="/projects"
-        button-text="Projects"
+        button-text=""
         flat
       />
-       <v-spacer></v-spacer>
-      <div class="app-header__nav-bar__center-container">
-        <v-card
-          class="ma-0 pa-0 app-header__nav-bar__center-container__logo"
-          flat
-        >
-          <v-card-title
-            class="ma-0 pa-5 app-header__nav-bar__center-container__logo__title"
-          >
-            AD
-          </v-card-title></v-card
-        >
-      </div>
       <v-spacer></v-spacer>
       <app-button
         url="images/navigation/lab.svg"
         :size="24"
         to="/lab"
         image-alt-text="Lab"
-        button-text="Lab"
+        button-text=""
         flat
       />
       <app-button
@@ -44,10 +33,12 @@
         :size="24"
         to="/articles"
         image-alt-text="Articles"
-        button-text="Articles"
+        button-text=""
         flat
       />
     
+</v-bottom-navigation>
+   
     </v-row>
   </v-container>
 </template>

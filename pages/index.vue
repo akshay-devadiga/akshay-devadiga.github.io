@@ -6,7 +6,7 @@
   <v-row justify="center">
   <v-col cols="11"> 
     <v-row justify="start">
-      <v-col cols="3" class="about__menu">
+      <v-col cols="3" class="about__menu" v-if="$vuetify.display.mdAndUp">
         <v-card class="mx-auto about__menu__card" flat>
           <!-- TODO: Support gradient in v2 :style="{ background: gradientBackground }" -->
           <v-row justify="center">
@@ -35,7 +35,7 @@
           </v-row>
         </v-card>
       </v-col>
-      <v-col cols="9" class="about__content">
+      <v-col :cols="$vuetify.display.mdAndUp?9:12" class="about__content">
         <v-card class="pa-0" flat color="transparent">
           <v-container>
             <v-row align="center" justify="center">
