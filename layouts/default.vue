@@ -1,9 +1,9 @@
 <template>
   <v-layout>
     <v-container class="app-content" fluid>
-      <v-row v-if="$vuetify.display.mdAndUp">
+      <!-- <v-row v-if="$vuetify.display.mdAndUp">
         <app-header/>
-      </v-row>
+      </v-row> -->
       <v-row>
         <v-main class="align-center justify-center app-content">
           <v-container fluid class="app-content" >

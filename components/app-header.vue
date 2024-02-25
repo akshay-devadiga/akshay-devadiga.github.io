@@ -4,8 +4,8 @@
       <app-button
         url="images/navigation/about.svg"
         :size="24"
-        image-alt-text="About"
-        button-text="About"
+        image-alt-text="Home"
+        button-text="Home"
         to="/"
         flat
       />
