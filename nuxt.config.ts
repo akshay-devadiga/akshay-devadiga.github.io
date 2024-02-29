@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     ['@nuxtjs/google-fonts', {
       families: {
         Roboto: true,
+        Poppins:true,
         Inter: [400, 700],
          'Josefin+Sans': true,
         Lato: [100, 300],

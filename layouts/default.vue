@@ -1,9 +1,11 @@
 <template>
   <v-layout>
     <v-container class="app-content" fluid>
-      <!-- <v-row v-if="$vuetify.display.mdAndUp">
+      <v-row justify="center" class="mb-5" v-if="$vuetify.display.mdAndUp">
+       <v-col cols="auto" >
         <app-header/>
-      </v-row> -->
+       </v-col>
+      </v-row>
       <v-row>
         <v-main class="align-center justify-center app-content">
           <v-container fluid class="app-content" >

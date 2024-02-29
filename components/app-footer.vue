@@ -1,28 +1,34 @@
 <template>
-  <v-footer class="pa-0 bg-transparent">
-    <v-container fluid>
-    <v-row align="center" justify="center">
-     <v-col cols="auto"> Built using &nbsp;<strong>Vuetify</strong> </v-col>
-      <v-col cols="auto"> 
-        <app-button
+  <v-footer class="bg-transparent">
+    <div class="d-flex justify-center mb-6 pl-2 pr-1 py-2  app-footer">
+      <app-button
+        url="images/back.svg"
+        :size="20"
+        image-alt-text="Mail"
+        to="/"
+        button-text="Go to Articles"
+        flat
+        class="bg-transparent px-0"
+      />
+      <app-button
         url="images/mail.svg"
         :size="20"
         image-alt-text="Mail"
         to="/projects"
         hide-button-text
         flat
-         class="bg-transparent px-0"
+        class="bg-transparent px-0"
       />
-        <app-button
+      <app-button
         url="images/linkedin.svg"
         :size="20"
         image-alt-text="LinkedIn"
         to="/projects"
         hide-button-text
         flat
-         class="bg-transparent px-0"
+        class="bg-transparent px-0"
       />
-        <app-button
+      <app-button
         url="images/github.svg"
         :size="20"
         image-alt-text="Mail"
@@ -31,8 +37,21 @@
         flat
         class="bg-transparent px-0"
       />
-      </v-col>
-    </v-row>
-    </v-container>
+       <app-button
+        url="images/message.svg"
+        :size="20"
+        href="https://airtable.com/appgwOfBTgG3Ur8va/pagNMZwmcett1X44P/form"
+             :show-left-button-text="true"
+        flat
+        button-text="Send me a message"
+        class="bg-transparent px-0"
+      />
+    </div>
   </v-footer>
 </template>
+<style lang="scss" scoped>
+.app-footer {
+  border-radius: 24px;
+  background: rgba(145, 213, 255, 0.4);
+}
+</style>

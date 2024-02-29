@@ -3,23 +3,30 @@
   <v-container fluid class="mt-9 app-header__nav-bar px-12 py-2">
     <v-row align="center">
      <v-bottom-navigation>
-    <app-button
+        <app-button
+        url="images/navigation/articles.svg"
+        :size="24"
+        to="/articles"
+        image-alt-text="Articles"
+        button-text=""
+        flat
+      />
+        <app-button
+        url="images/navigation/view-list.svg"
+        :size="24"
+        to="/til"
+        image-alt-text="TIL"
+        flat
+        class="mx-1"
+      />    <v-spacer></v-spacer>
+          <app-button
         url="images/navigation/about.svg"
         :size="24"
         image-alt-text="About"
         button-text=""
         to="/"
         flat
-      />
-      <app-button
-        url="images/navigation/projects.svg"
-        :size="24"
-        image-alt-text="Projects"
-        to="/projects"
-        button-text=""
-        flat
-      />
-      <v-spacer></v-spacer>
+      />    <v-spacer></v-spacer>
       <app-button
         url="images/navigation/lab.svg"
         :size="24"
@@ -28,11 +35,11 @@
         button-text=""
         flat
       />
-      <app-button
-        url="images/navigation/articles.svg"
+     <app-button
+        url="images/navigation/projects.svg"
         :size="24"
-        to="/articles"
-        image-alt-text="Articles"
+        image-alt-text="Projects"
+        to="/projects"
         button-text=""
         flat
       />

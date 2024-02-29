@@ -55,29 +55,16 @@
       </div>
 
       <div class="blueprint">
-        <svg width="100%" height="100%" viewbox="0 0 100 100">
-          <line
-            id="line-length"
-            x1="10"
-            y1="80"
-            x2="90"
-            y2="80"
-            stroke-width="0.5"
-          ></line>
-          <path
-            id="line-wingspan"
-            d="M10 50, L40 35, M60 35 L90 50"
-            stroke-width="0.5"
-          ></path>
-          <circle
-            id="circle-phalange"
-            cx="60"
-            cy="60"
-            r="15"
-            fill="transparent"
-            stroke-width="0.5"
-          ></circle>
-        </svg>
+        <v-container fluid>
+        <v-row no-gutters>
+          <v-col cols="4" class="px-0">
+           <v-img src="ship.svg" contain/>
+          </v-col>
+          <v-col cols="auto">
+          </v-col>
+        </v-row>
+        </v-container>
+       
         <div class="section dark">
           <h2>The facts and figures.</h2>
           <p>Lets get into the nitty gritty...</p>
@@ -270,37 +257,32 @@ export default {
       scene.render();
 
       var sectionDuration = 0.05;
-      gsap.fromTo(
-        scene.views[1],
-        { height: 1, bottom: 0 },
-        {
-          height: 0,
-          bottom: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".blueprint",
-            scrub: true,
-            start: "bottom bottom",
-            end: "bottom top",
-          },
-        }
-      );
-
-      gsap.fromTo(
-        scene.views[1],
-        { height: 0, bottom: 0 },
-        {
-          height: 1,
-          bottom: 0,
-          ease: "none",
-          scrollTrigger: {
-            trigger: ".blueprint",
-            scrub: true,
-            start: "top bottom",
-            end: "top top",
-          },
-        }
-      );
+    gsap.fromTo(scene.views[1], 
+		{ 	height: 1, bottom: 0 }, 
+		{
+			height: 0, bottom: 1,
+			ease: 'none',
+			scrollTrigger: {
+			  trigger: ".blueprint",
+			  scrub: true,
+			  start: "bottom bottom",
+			  end: "bottom top"
+			}
+		})
+	
+	gsap.fromTo(scene.views[1], 
+		{ 	height: 0, bottom: 0 }, 
+		{
+			height: 1, bottom: 0,
+			ease: 'none',
+			scrollTrigger: {
+			  trigger: ".blueprint",
+			  scrub: true,
+			  start: "top bottom",
+			  end: "top top"
+			}
+		})
+	
 
       let tl = new gsap.timeline({
         onUpdate: scene.render,
@@ -427,7 +409,7 @@ canvas {
 
   .blueprint {
     position: relative;
-    background-color: #131c2a;
+    background-color: #F5F5F5;
     background-image: linear-gradient(
         rgba(255, 255, 255, 0.1) 1px,
         transparent 1px
