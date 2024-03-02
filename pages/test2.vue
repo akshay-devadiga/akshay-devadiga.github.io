@@ -3,42 +3,30 @@
     <canvas class="webgl"></canvas>
     <div class="content">
       <div class="loading">Loading</div>
-      <div class="trigger"></div>
-    <div class="scroll-cta">Scroll</div>
-      <div class="section">
-      </div>
+      <div class="scroll-cta">Scroll</div>
+
       <div class="blueprint">
-        <!-- <v-container fluid class="ship-lookout">
-        <v-row no-gutters>
-          <v-col cols="4" class="px-0">
-           <v-img src="ship.svg" contain/>
-          </v-col>
-          <v-col cols="auto">
-          </v-col>
-        </v-row>
-        </v-container> -->
-       
-        <div class="section dark">
+       <div class="section"></div>
+        <div class="section">
           <h2>The facts and figures.</h2>
           <p>Lets get into the nitty gritty...</p>
         </div>
-        <div class="section dark length">
+        <div class="section">
           <h2>Length.</h2>
           <p>Long.</p>
         </div>
-        <div class="section dark wingspan">
+        <div class="section">
           <h2>Wing Span.</h2>
           <p>I dunno, longer than a cat probably.</p>
         </div>
-        <div class="section dark phalange">
+        <div class="section">
           <h2>Left Phalange</h2>
           <p>Missing</p>
         </div>
-        <div class="section dark">
+        <div class="section">
           <h2>Engines</h2>
           <p>Turbine funtime</p>
         </div>
-        <!-- 		<div class="section"></div> -->
       </div>
     </div>
   </div>
@@ -169,16 +157,11 @@ export default {
       gltfLoader.load("model.gltf", (gltf) => {
         gltf.scene.traverse((child) => {
           if (child.isMesh) {
-            // const wireframeGeometry = new THREE.WireframeGeometry(child.geometry)
-            // const wireframeMaterial = new THREE.LineBasicMaterial({ color: '#43a0ad' })
-            // const wireframe = new THREE.LineSegments(wireframeGeometry, wireframeMaterial)
-            // child.add(wireframe)
-            // child.material.visible = false // Hide the original material
             gltf.scene.traverse((child) => {
               if (child.isMesh) {
                 const material = new THREE.MeshStandardMaterial({
                   color: child.material.color,
-                 // wireframe:true
+                  // wireframe:true
                 });
                 child.material = material;
               }
@@ -192,8 +175,7 @@ export default {
     setupAnimation(model) {
       const canvas = document.querySelector("canvas.webgl");
       let scene = new Scene(model, canvas);
-      let plane = scene.modelGroup;
-
+      let ship = scene.modelGroup;
       gsap.fromTo(
         "canvas",
         { x: "40%", autoAlpha: 0 },
@@ -201,10 +183,9 @@ export default {
       );
       gsap.to(".loading", { autoAlpha: 0 });
       let tau = Math.PI * 2;
-      gsap.set(plane.rotation, { y: tau * 0.18 });
-      gsap.set(plane.position, { x: 80, y: -32, z: -60 });
+      gsap.set(ship.rotation, { y: tau * 0.18 });
+      gsap.set(ship.position, { x: 80, y: -32, z: -60 });
       scene.render();
-
       var sectionDuration = 0.011;
       let tl = new gsap.timeline({
         onUpdate: scene.render,
@@ -213,75 +194,32 @@ export default {
           scrub: true,
           start: "top top",
           end: "bottom bottom",
-          markers: true
+          markers: true,
         },
         defaults: { duration: sectionDuration, ease: "power2.inOut" },
       });
-
       let delay = 0;
-
       tl.to(".scroll-cta", { duration: 0.25, opacity: 0 }, delay);
       delay += sectionDuration;
-      tl.to(plane.position, { x: 20, ease: "power1.in" }, delay);
+      tl.to(ship.position, { x: 20, ease: "power1.in" }, delay);
       delay += sectionDuration;
-      tl.to(plane.rotation, { y: tau * -0.05, ease: "power1.inOut" }, delay);
-      tl.to(plane.position, { z: -100, ease: "power1.inOut" }, delay);
-            delay += sectionDuration;
-      tl.to(plane.rotation, { y: tau * -0.25, ease: "power1.inOut" }, delay);
-      tl.to(plane.position, { z: 400, y:200, ease: "power1.inOut" }, delay);
+      tl.to(ship.rotation, { y: tau * -0.05, ease: "power1.inOut" }, delay);
+      tl.to(ship.position, { z: -100, ease: "power1.inOut" }, delay);
+      delay += sectionDuration;
+      tl.to(ship.rotation, { y: tau * -0.25, ease: "power1.inOut" }, delay);
+      tl.to(ship.position, { z: 400, y: 200, ease: "power1.inOut" }, delay);
     },
   },
 };
 </script>
 <style lang="scss">
-@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap");
-svg {
-  z-index: 100;
-}
-:root {
-  --padding: 10vmin;
-  --color-background: #d0cbc7;
-
-  --font-size-large: 8vw;
-  --font-size-medium: 4vw;
-  --font-size-normal: 2vw;
-
-  @media only screen and (min-width: 800px) {
-    --font-size-large: 64px;
-    --font-size-medium: 32px;
-    --font-size-normal: 16px;
-  }
-
-  @media only screen and (max-width: 500px) {
-    --font-size-large: 40px;
-    --font-size-medium: 20px;
-    --font-size-normal: 14px;
-  }
-}
-
-a {
-  color: white;
-}
-
-ul {
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-li {
-  margin-top: 10px;
-}
-
 canvas {
-  //background:red;
   position: fixed;
   z-index: 10;
   top: 0;
   left: 0;
   z-index: 2;
   pointer-events: none;
-
   visibility: hidden;
   opacity: 0;
 }
@@ -306,7 +244,7 @@ canvas {
     &.right {
       text-align: right;
     }
-  } 
+  }
   .blueprint {
     position: relative;
   }
