@@ -100,59 +100,59 @@ function onResize() {
 
 function onScroll() {
         console.log(camera.position)
-    // const scrollY = window.scrollY
-    // gltfScene.position.x = scrollY * 100
-//     camera.position.z =25;
-// camera.position.x =0;
-// camera.position.y =2;
-// camera.rotation.z=10;
-// camera.position.z =10;
-// camera.position.x =0;
-// camera.position.y =0;
-    // renderer.render(scene, camera)
-//   const scrollY = window.scrollY
-//   let targetPosition
+    const scrollY = window.scrollY;
+    gltfScene.position.x = scrollY * 100
+    camera.position.z =25;
+camera.position.x =0;
+camera.position.y =2;
+camera.rotation.z=10;
+camera.position.z =10;
+camera.position.x =0;
+camera.position.y =0;
+    renderer.render(scene, camera)
+//  const scrollY = window.scrollY
+  let targetPosition
 
-//   if (scrollY < thresholds[0]) {
-//     targetPosition = cameraPositions[0]
-//   } else if (scrollY < thresholds[1]) {
-//     targetPosition = cameraPositions[1]
-//   } else if (scrollY < thresholds[2]) {
-//     targetPosition = cameraPositions[2]
-//   } else {
-//     targetPosition = camera.position
-//   }
-//  let timeline = gsap.timeline({
-//     defaults: {
-//       ease: 'power1.out',
-//     },
-//     scrollTrigger: {
-//       trigger: '.scroll',
-//       start: "top",
-//       scrub: 1,
-//     }
-//   })
+  if (scrollY < thresholds[0]) {
+    targetPosition = cameraPositions[0]
+  } else if (scrollY < thresholds[1]) {
+    targetPosition = cameraPositions[1]
+  } else if (scrollY < thresholds[2]) {
+    targetPosition = cameraPositions[2]
+  } else {
+    targetPosition = camera.position
+  }
+ let timeline = gsap.timeline({
+    defaults: {
+      ease: 'power1.out',
+    },
+    scrollTrigger: {
+      trigger: '.scroll',
+      start: "top",
+      scrub: 1,
+    }
+  })
   
-//   timeline.to(gltfScene.rotation, { x: Math.PI })
-//   timeline.to(gltfScene.rotation, { y: Math.PI * 2 })
-//   timeline.to(gltfScene.scale, { x: 3, y: 3, z: 3 })
-//   timeline.to(gltfScene.rotation, { y: Math.PI }, '<')
+  timeline.to(gltfScene.rotation, { x: Math.PI })
+  timeline.to(gltfScene.rotation, { y: Math.PI * 2 })
+  timeline.to(gltfScene.scale, { x: 3, y: 3, z: 3 })
+  timeline.to(gltfScene.rotation, { y: Math.PI }, '<')
 
-//   gsap.to(camera.position, {
-//     duration: 3,
-//     x: 0,
-//     y: 0,
-//     z: 10
-//   })
+  gsap.to(camera.position, {
+    duration: 3,
+    x: 0,
+    y: 0,
+    z: 10
+  })
   
 
-//   if (scrollY > wireframeThreshold) {
-//     scene.traverse(child => {
-//       if (child.isMesh) {
-//         child.material = new THREE.MeshBasicMaterial({ wireframe: true })
-//       }
-//     })
-//   }
+   if (scrollY > wireframeThreshold) {
+     scene.traverse(child => {
+       if (child.isMesh) {
+         child.material = new THREE.MeshBasicMaterial({ wireframe: true })
+       }
+     })
+   }
 }
 
 function setupCamera() {
@@ -204,7 +204,7 @@ function animate() {
 }
 </script>
 
-<style>
+<style scoped>
   canvas.webgl {
     margin-top: 5rem;
     width: 100%;

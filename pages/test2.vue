@@ -4,58 +4,11 @@
     <div class="content">
       <div class="loading">Loading</div>
       <div class="trigger"></div>
-
+    <div class="scroll-cta">Scroll</div>
       <div class="section">
-        <h1>Airplanes.</h1>
-        <h3>The beginners guide.</h3>
-        <p>You've probably forgotten what these are.</p>
-        <!-- 		<div class="phonetic">/ ˈɛərˌpleɪn /</div> -->
-        <div class="scroll-cta">Scroll</div>
       </div>
-      <div class="section"></div>
-      <div class="section"></div>
-      <div class="section"></div>
-      <div class="section"></div>
-      <div class="section"></div>
-      <div class="section"></div>
-      <div class="section"></div>
-      <div class="section"></div>
-      <div class="section right">
-        <h2>They're kinda like buses...</h2>
-      </div>
-
-      <div class="ground-container">
-        <div class="parallax ground"></div>
-        <div class="section right">
-          <h2>..except they leave the ground.</h2>
-          <p>Saaay what!?.</p>
-        </div>
-        <div class="section">
-          <h2>They fly through the sky.</h2>
-          <p>For realsies!</p>
-        </div>
-        <div class="section">
-          <h2>They fly through the sky.</h2>
-          <p>For realsies!</p>
-        </div>
-        <div class="section">
-          <h2>They fly through the sky.</h2>
-          <p>For realsies!</p>
-        </div>
-        <div class="section">
-          <h2>They fly through the sky.</h2>
-          <p>For realsies!</p>
-        </div>
-
-        <div class="section right">
-          <h2>Defying all known physical laws.</h2>
-          <p>It's actual magic!</p>
-        </div>
-        <div class="parallax clouds"></div>
-      </div>
-
       <div class="blueprint">
-        <v-container fluid>
+        <!-- <v-container fluid class="ship-lookout">
         <v-row no-gutters>
           <v-col cols="4" class="px-0">
            <v-img src="ship.svg" contain/>
@@ -63,7 +16,7 @@
           <v-col cols="auto">
           </v-col>
         </v-row>
-        </v-container>
+        </v-container> -->
        
         <div class="section dark">
           <h2>The facts and figures.</h2>
@@ -225,6 +178,7 @@ export default {
               if (child.isMesh) {
                 const material = new THREE.MeshStandardMaterial({
                   color: child.material.color,
+                 // wireframe:true
                 });
                 child.material = material;
               }
@@ -242,48 +196,16 @@ export default {
 
       gsap.fromTo(
         "canvas",
-        { x: "50%", autoAlpha: 0 },
+        { x: "40%", autoAlpha: 0 },
         { duration: 1, x: "0%", autoAlpha: 1 }
       );
       gsap.to(".loading", { autoAlpha: 0 });
-      gsap.to(".scroll-cta", { opacity: 1 });
-      // gsap.set('svg', {autoAlpha: 1})
-
       let tau = Math.PI * 2;
-
       gsap.set(plane.rotation, { y: tau * 0.18 });
       gsap.set(plane.position, { x: 80, y: -32, z: -60 });
-
       scene.render();
 
-      var sectionDuration = 0.05;
-    gsap.fromTo(scene.views[1], 
-		{ 	height: 1, bottom: 0 }, 
-		{
-			height: 0, bottom: 1,
-			ease: 'none',
-			scrollTrigger: {
-			  trigger: ".blueprint",
-			  scrub: true,
-			  start: "bottom bottom",
-			  end: "bottom top"
-			}
-		})
-	
-	gsap.fromTo(scene.views[1], 
-		{ 	height: 0, bottom: 0 }, 
-		{
-			height: 1, bottom: 0,
-			ease: 'none',
-			scrollTrigger: {
-			  trigger: ".blueprint",
-			  scrub: true,
-			  start: "top bottom",
-			  end: "top top"
-			}
-		})
-	
-
+      var sectionDuration = 0.011;
       let tl = new gsap.timeline({
         onUpdate: scene.render,
         scrollTrigger: {
@@ -291,6 +213,7 @@ export default {
           scrub: true,
           start: "top top",
           end: "bottom bottom",
+          markers: true
         },
         defaults: { duration: sectionDuration, ease: "power2.inOut" },
       });
@@ -298,9 +221,14 @@ export default {
       let delay = 0;
 
       tl.to(".scroll-cta", { duration: 0.25, opacity: 0 }, delay);
+      delay += sectionDuration;
       tl.to(plane.position, { x: 20, ease: "power1.in" }, delay);
       delay += sectionDuration;
       tl.to(plane.rotation, { y: tau * -0.05, ease: "power1.inOut" }, delay);
+      tl.to(plane.position, { z: -100, ease: "power1.inOut" }, delay);
+            delay += sectionDuration;
+      tl.to(plane.rotation, { y: tau * -0.25, ease: "power1.inOut" }, delay);
+      tl.to(plane.position, { z: 400, y:200, ease: "power1.inOut" }, delay);
     },
   },
 };
@@ -345,18 +273,6 @@ li {
   margin-top: 10px;
 }
 
-html,
-body {
-  margin: 0;
-  min-height: 100%;
-  min-width: 100%;
-  font-family: "Libre Baskerville", serif;
-  background-color: var(--color-background);
-  font-weight: 400;
-  font-size: var(--font-size-normal);
-  overflow-x: hidden;
-}
-
 canvas {
   //background:red;
   position: fixed;
@@ -370,30 +286,15 @@ canvas {
   opacity: 0;
 }
 
-.solid {
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-}
-
-.wireframe {
-  clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
-}
-
 .content {
   position: relative;
   z-index: 1;
-
-  .trigger {
-    position: absolute;
-    top: 0;
-    height: 100%;
-  }
-
   .section {
     position: relative;
     padding: var(--padding);
     --pad2: calc(var(--padding) * 2);
     width: calc(100vw - var(--pad2));
-    height: calc(100vh - var(--pad2));
+    height: 280vh;
     margin: 0 auto;
     z-index: 2;
 
@@ -405,99 +306,14 @@ canvas {
     &.right {
       text-align: right;
     }
-  }
-
+  } 
   .blueprint {
     position: relative;
-    background-color: #F5F5F5;
-    background-image: linear-gradient(
-        rgba(255, 255, 255, 0.1) 1px,
-        transparent 1px
-      ),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.1) 1px, transparent 1px),
-      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
-    background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
-    background-attachment: fixed;
-
-    svg {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      stroke: white;
-      pointer-events: none;
-      visibility: hidden;
-    }
-
-    .dark {
-      background-color: transparent;
-    }
-  }
-
-  .ground-container {
-    position: relative;
-    overflow: hidden;
-
-    .parallax {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: -100px;
-      background-repeat: no-repeat;
-      background-position: top center;
-      background-size: cover;
-      transform-origin: top center;
-    }
-
-    .ground {
-      z-index: -1;
-      background-image: url("https://assets.codepen.io/557388/background-reduced.jpg");
-    }
-
-    .clouds {
-      z-index: 2;
-      background-image: url("https://assets.codepen.io/557388/clouds.png");
-    }
-  }
-
-  .scroll-cta,
-  .credits {
-    position: absolute;
-    bottom: var(--padding);
   }
 
   .scroll-cta {
     font-size: var(--font-size-medium);
-    opacity: 0;
-  }
-
-  .sunset {
-    background: url("https://assets.codepen.io/557388/sunset-reduced.jpg")
-      no-repeat top center;
-    background-size: cover;
-    transform-origin: top center;
-  }
-
-  h1,
-  h2 {
-    font-size: var(--font-size-large);
-    margin: 0vmin 0 2vmin 0;
-    font-weight: 700;
-    display: inline;
-  }
-
-  h3 {
-    font-size: var(--font-size-medium);
-    font-weight: 400;
-    margin: 0;
-  }
-
-  .end h2 {
-    margin-bottom: 50vh;
+    opacity: 1;
   }
 
   .loading {
