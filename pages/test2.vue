@@ -3,7 +3,7 @@
     <canvas class="webgl"></canvas>
     <div class="content">
       <div class="loading">Loading</div>
-      <div class="scroll-cta">Scroll</div>
+      <div class="scroll-cta"></div>
 
       <div class="blueprint">
        <div class="section"></div>
@@ -32,9 +32,10 @@
   </div>
 </template>
 
-<script>
+<script setup>
 import * as THREE from "three";
 import gsap from "gsap";
+import { onMounted } from "vue";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 class Scene {
@@ -145,34 +146,7 @@ class Scene {
     this.render();
   };
 }
-
-export default {
-  mounted() {
-    this.loadModel();
-  },
-  methods: {
-    loadModel() {
-      gsap.registerPlugin(ScrollTrigger);
-      const gltfLoader = new GLTFLoader();
-      gltfLoader.load("model.gltf", (gltf) => {
-        gltf.scene.traverse((child) => {
-          if (child.isMesh) {
-            gltf.scene.traverse((child) => {
-              if (child.isMesh) {
-                const material = new THREE.MeshStandardMaterial({
-                  color: child.material.color,
-                  // wireframe:true
-                });
-                child.material = material;
-              }
-            });
-          }
-        });
-        gltf.scene.scale.set(12, 12, 12);
-        this.setupAnimation(gltf.scene);
-      });
-    },
-    setupAnimation(model) {
+  function setupAnimation(model) {
       const canvas = document.querySelector("canvas.webgl");
       let scene = new Scene(model, canvas);
       let ship = scene.modelGroup;
@@ -208,9 +182,30 @@ export default {
       delay += sectionDuration;
       tl.to(ship.rotation, { y: tau * -0.25, ease: "power1.inOut" }, delay);
       tl.to(ship.position, { z: 400, y: 200, ease: "power1.inOut" }, delay);
-    },
-  },
-};
+    }
+ function loadModel() {
+      gsap.registerPlugin(ScrollTrigger);
+      const gltfLoader = new GLTFLoader();
+      gltfLoader.load("model.gltf", (gltf) => {
+        gltf.scene.traverse((child) => {
+          if (child.isMesh) {
+            gltf.scene.traverse((child) => {
+              if (child.isMesh) {
+                const material = new THREE.MeshStandardMaterial({
+                  color: child.material.color,
+                  // wireframe:true
+                });
+                child.material = material;
+              }
+            });
+          }
+        });
+        gltf.scene.scale.set(12, 12, 12);
+        setupAnimation(gltf.scene);
+      });
+    }
+   
+onMounted(loadModel);
 </script>
 <style lang="scss">
 canvas {
@@ -232,7 +227,7 @@ canvas {
     padding: var(--padding);
     --pad2: calc(var(--padding) * 2);
     width: calc(100vw - var(--pad2));
-    height: 280vh;
+    height: 300vh;
     margin: 0 auto;
     z-index: 2;
 
