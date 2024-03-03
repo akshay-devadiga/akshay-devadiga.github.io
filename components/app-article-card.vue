@@ -78,14 +78,14 @@ function goToDetails() {
 .article {
   border: 1px solid #DDDEE0;
   border-radius: 12px;
-  background: #91d5ff;
+  background: #423C58;
    &__container{
       border: 1px solid #DDDEE0;
       border-radius: 8px;
       background: white;
  &__chip {
     border-radius: 12px;
-    border: 3px solid #91d5ff;
+    border: 3px solid #423C58;
     background: #000;
     color: #ffff;
     font-family: Inter;

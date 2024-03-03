@@ -52,6 +52,6 @@
 <style lang="scss" scoped>
 .app-footer {
   border-radius: 24px;
-  background: rgba(145, 213, 255, 0.4);
+  background: #F2EFE1;
 }
 </style>

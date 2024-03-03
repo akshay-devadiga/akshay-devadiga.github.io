@@ -64,7 +64,7 @@ function onItemClick(payload){
       background: #e7e7e7;
       padding: 0px;
       &__active {
-        border: 3px solid #91d5ff;
+        border: 3px solid #A3BDAE;
         font-weight: 700 !important;
       }
     }

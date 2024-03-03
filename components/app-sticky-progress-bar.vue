@@ -5,7 +5,7 @@
          <v-divider inset/>
           <v-progress-linear
             :model-value="progressValue"
-            color="#91d5ff"
+            color="#A3BDAE"
             height="10"
           ></v-progress-linear>
            <v-divider inset/>

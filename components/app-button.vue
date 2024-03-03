@@ -1,5 +1,5 @@
 <template>
-  <v-btn :to="to" :flat="flat" :v-ripple="false" class="px-3" rounded :href="href">
+  <v-btn :to="to" :flat="flat" :v-ripple="false" class="px-3" color="#F2EFE1" rounded :href="href">
     <template v-slot:prepend v-if="!showLeftButtonText">
       <v-avatar color="transparent" rounded="0">
         <v-img :src="url" :height="size" contain :alt="imageAltText"></v-img>

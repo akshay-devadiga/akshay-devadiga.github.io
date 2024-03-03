@@ -25,10 +25,13 @@
       </row>
     </v-container>
   </v-layout>
-</template>\
+</template>
+<!--   background-color: #f5f5f5; -->
+<!--   background: #6B7F95; -->
 <style scoped>
+
 .app-content {
-  background-color: #f5f5f5;
+  background: #A3BDAE;
 }
 .default::before {
   position: absolute;

@@ -1,443 +1,431 @@
 <template>
-  <v-container fluid>
-      <canvas class="webgl"></canvas>
-      <div class="content">
-        <div class="loading">Loading</div>
-        <div class="scroll-cta"></div>
-          <div class="section"></div>
-            <v-row justify="center" class="about">
-              <v-col cols="11">
-                <v-row justify="start">
-                  <v-col
-                    cols="3"
-                    class="about__menu"
-                    v-if="$vuetify.display.mdAndUp"
-                  >
-                    <v-card class="mx-auto about__menu__card" flat>
-                      <!-- TODO: Support gradient in v2 :style="{ background: gradientBackground }" -->
-                      <v-row justify="center">
-                        <v-col cols="auto" class="pt-6 px-6">
-                          <v-avatar size="160">
-                            <v-img
-                              src="images/about/menu-illustration.svg"
-                              contain
-                            />
-                          </v-avatar>
-                        </v-col>
-                      </v-row>
-                      <v-row justify="center">
-                        <v-col cols="10" class="pt-0">
-                          <app-sticky-progress-bar
-                            :progressValue="progressValue"
-                            class="mx-auto"
-                          />
-                        </v-col>
-                      </v-row>
-                      <v-row justify="center">
-                        <v-col cols="auto">
-                          <app-about-menu
-                            :list="menuItems"
-                            :activeItemIndex="Number(currStep)"
-                            @onItemClick="onItemClickHandler"
-                          />
-                        </v-col>
-                      </v-row>
-                    </v-card>
-                  </v-col>
-                  <v-col
-                    :cols="$vuetify.display.mdAndUp ? 9 : 12"
-                    class="about__content"
-                  >
-                    <v-card class="pa-0" flat color="transparent">
-                      <v-container>
-                        <v-row align="center" justify="center">
-                          <v-col cols="10">
-                            <app-scrollama
-                              :debug="false"
-                              @step-enter="
-                                ({ element }) => setCurrStep(element)
-                              "
-                              @step-progress="
-                                ({ element }) => handleStepProgress(element)
-                              "
+  <v-container fluid style="background: #a3bdae">
+    <canvas class="webgl"></canvas>
+    <div class="content">
+      <div class="loading">Loading</div>
+      <div class="scroll-cta"></div>
+      <div class="section"></div>
+      <v-container fluid>
+        <v-row justify="center" class="about" id="about" ref="scrollDiv" @scroll="onScroll">
+          <v-col cols="11">
+            <v-row justify="start">
+              <v-col
+                cols="3"
+                class="about__menu"
+                v-if="$vuetify.display.mdAndUp"
+              >
+                <v-card class="mx-auto about__menu__card" flat>
+                  <!-- TODO: Support gradient in v2 :style="{ background: gradientBackground }" -->
+                  <v-row justify="center">
+                    <v-col cols="auto" class="pt-6 px-6">
+                      <v-avatar size="160">
+                        <v-img
+                          src="images/about/menu-illustration.svg"
+                          contain
+                        />
+                      </v-avatar>
+                    </v-col>
+                  </v-row>
+                  <v-row justify="center">
+                    <v-col cols="10" class="pt-0">
+                      <app-sticky-progress-bar
+                        :progressValue="progressValue"
+                        class="mx-auto"
+                      />
+                    </v-col>
+                  </v-row>
+                  <v-row justify="center">
+                    <v-col cols="auto">
+                      <app-about-menu
+                        :list="menuItems"
+                        :activeItemIndex="Number(currStep)"
+                        @onItemClick="onItemClickHandler"
+                      />
+                    </v-col>
+                  </v-row>
+                </v-card>
+              </v-col>
+              <v-col
+                :cols="$vuetify.display.mdAndUp ? 9 : 12"
+                class="about__content"
+              >
+                <v-card class="pa-0" flat color="transparent">
+                  <v-container fluid>
+                    <v-row align="center" justify="center">
+                      <v-col cols="10">
+                        <app-scrollama
+                          :debug="false"
+                          @step-enter="({ element }) => setCurrStep(element)"
+                          @step-progress="
+                            ({ element }) => handleStepProgress(element)
+                          "
+                        >
+                          <v-col cols="auto" class="py-0 pl-0 pr-5 mr-10">
+                            <v-avatar
+                              size="120"
+                              rounded="0"
+                              style="height: 80px"
                             >
-                              <v-col cols="auto" class="py-0 pl-0 pr-5 mr-10">
-                                <v-avatar
-                                  size="120"
-                                  rounded="0"
-                                  style="height: 80px"
+                              <v-img src="images/about/shakleset.svg" contain />
+                            </v-avatar>
+                          </v-col>
+                          <v-col
+                            cols="12"
+                            class="about__content__deck"
+                            style="position: relative; z-index: 2"
+                          >
+                            <v-card class="pa-0 text-center" flat>
+                              <h1 class="text-h6">
+                                Quality is not an act it is a habit - Aristotle
+                              </h1>
+                            </v-card>
+                          </v-col>
+                          <v-col cols="auto" class="py-0">
+                            <v-avatar size="70">
+                              <v-img src="images/about/chain.svg" contain />
+                            </v-avatar>
+                          </v-col>
+                          <v-col
+                            cols="12"
+                            data-step-no="1"
+                            class="about__content__under-deck"
+                            id="whoami"
+                          >
+                            <v-card class="pa-10" flat>
+                              <p>Hey! I am Akshay</p>
+                              <br />
+                              <p>
+                                Frontend engineer based in Bengaluru, India.
+                              </p>
+                              <p>
+                                I specialize in developing user-centric,
+                                accessible and performant interfaces. My primary
+                                focus is on writing clean, maintainable code
+                                with a balance of considering time constraints
+                                for efficient delivery.I am passionate about
+                                collaborating with talented individuals to build
+                                products that make a meaningful impact. It
+                                brings me joy to learn and grow through the
+                                process.
+                              </p>
+                              <br />
+                              <p>
+                                Although I have extensive frontend experience
+                                spanned across years, I also adeptly pivot to
+                                backend tasks when necessary. Additionally, I
+                                engage in creating informal mockups as needed.
+                              </p>
+                              <p>I write here once in a while.</p>
+                            </v-card>
+                          </v-col>
+                          <v-col cols="auto" class="py-0">
+                            <v-avatar size="70">
+                              <v-img src="images/about/chain.svg" contain />
+                            </v-avatar>
+                          </v-col>
+                          <v-col
+                            cols="12"
+                            data-step-no="2"
+                            class="about__content__under-deck"
+                            id="techstack"
+                          >
+                            <v-card class="px-10 pb-10 pt-4" flat>
+                              <v-chip
+                                class="mb-2 about__content__under-deck__chip"
+                                size="large"
+                              >
+                                Tech Stack
+                              </v-chip>
+                              <v-card-text>
+                                <v-row>
+                                  <v-col cols="8" class="px-0">
+                                    <p>Actively engrossed in working with:</p>
+                                  </v-col>
+                                </v-row>
+
+                                <v-row justify="start" align="center">
+                                  <v-col
+                                    cols="auto"
+                                    v-for="(aUItem, i) in activelyUsing"
+                                    :key="i"
+                                  >
+                                    <v-avatar
+                                      color="transparent"
+                                      rounded="0"
+                                      :size="aUItem.size"
+                                    >
+                                      <v-img
+                                        :src="aUItem.url"
+                                        contain
+                                        :alt="aUItem.imageAltText"
+                                      ></v-img>
+                                    </v-avatar>
+                                  </v-col>
+                                </v-row>
+
+                                <v-row>
+                                  <v-col cols="8" class="px-0">
+                                    <p>Previously worked with:</p>
+                                  </v-col>
+                                </v-row>
+
+                                <v-row justify="start" align="center">
+                                  <v-col
+                                    cols="auto"
+                                    v-for="(pWItem, i) in previouslyWorkedWith"
+                                    :key="i"
+                                  >
+                                    <v-avatar
+                                      color="transparent"
+                                      rounded="0"
+                                      :size="pWItem.size"
+                                    >
+                                      <v-img
+                                        :src="pWItem.url"
+                                        contain
+                                        :alt="pWItem.imageAltText"
+                                      ></v-img>
+                                    </v-avatar>
+                                  </v-col>
+                                </v-row>
+                              </v-card-text>
+                            </v-card>
+                          </v-col>
+                          <v-col cols="auto" class="py-0">
+                            <v-avatar size="70">
+                              <v-img src="images/about/chain.svg" contain />
+                            </v-avatar>
+                          </v-col>
+                          <v-col
+                            cols="12"
+                            data-step-no="3"
+                            class="about__content__under-deck"
+                            id="work"
+                          >
+                            <v-card class="px-10 pb-10 pt-4" flat>
+                              <v-chip
+                                class="mb-2 about__content__under-deck__chip"
+                                size="large"
+                              >
+                                Work
+                              </v-chip>
+                              <v-card-text>
+                                <v-row
+                                  justify="start"
+                                  align="center"
+                                  class="my-0"
                                 >
-                                  <v-img
-                                    src="images/about/shakleset.svg"
-                                    contain
-                                  />
-                                </v-avatar>
-                              </v-col>
-                              <v-col
-                                cols="12"
-                                class="about__content__deck"
-                                style="position: relative; z-index: 2"
-                              >
-                                <v-card class="pa-0 text-center" flat>
-                                  <h1 class="text-h6">
-                                    Quality is not an act it is a habit -
-                                    Aristotle
-                                  </h1>
-                                </v-card>
-                              </v-col>
-                              <v-col cols="auto" class="py-0">
-                                <v-avatar size="70">
-                                  <v-img src="images/about/chain.svg" contain />
-                                </v-avatar>
-                              </v-col>
-                              <v-col
-                                cols="12"
-                                data-step-no="1"
-                                class="about__content__under-deck"
-                                id="whoami"
-                              >
-                                <v-card class="pa-10" flat>
-                                  <p>Hey! I am Akshay</p>
-                                  <br />
-                                  <p>
-                                    Frontend engineer based in Bengaluru, India.
-                                  </p>
-                                  <p>
-                                    I specialize in developing user-centric,
-                                    accessible and performant interfaces. My
-                                    primary focus is on writing clean,
-                                    maintainable code with a balance of
-                                    considering time constraints for efficient
-                                    delivery.I am passionate about collaborating
-                                    with talented individuals to build products
-                                    that make a meaningful impact. It brings me
-                                    joy to learn and grow through the process.
-                                  </p>
-                                  <br />
-                                  <p>
-                                    Although I have extensive frontend
-                                    experience spanned across years, I also
-                                    adeptly pivot to backend tasks when
-                                    necessary. Additionally, I engage in
-                                    creating informal mockups as needed.
-                                  </p>
-                                  <p>I write here once in a while.</p>
-                                </v-card>
-                              </v-col>
-                              <v-col cols="auto" class="py-0">
-                                <v-avatar size="70">
-                                  <v-img src="images/about/chain.svg" contain />
-                                </v-avatar>
-                              </v-col>
-                              <v-col
-                                cols="12"
-                                data-step-no="2"
-                                class="about__content__under-deck"
-                                id="techstack"
-                              >
-                                <v-card class="px-10 pb-10 pt-4" flat>
-                                  <v-chip
-                                    class="mb-2 about__content__under-deck__chip"
-                                    size="large"
-                                  >
-                                    Tech Stack
-                                  </v-chip>
-                                  <v-card-text>
-                                    <v-row>
-                                      <v-col cols="8" class="px-0">
-                                        <p>
-                                          Actively engrossed in working with:
-                                        </p>
-                                      </v-col>
-                                    </v-row>
-
-                                    <v-row justify="start" align="center">
-                                      <v-col
-                                        cols="auto"
-                                        v-for="(aUItem, i) in activelyUsing"
-                                        :key="i"
-                                      >
-                                        <v-avatar
-                                          color="transparent"
-                                          rounded="0"
-                                          :size="aUItem.size"
-                                        >
-                                          <v-img
-                                            :src="aUItem.url"
-                                            contain
-                                            :alt="aUItem.imageAltText"
-                                          ></v-img>
-                                        </v-avatar>
-                                      </v-col>
-                                    </v-row>
-
-                                    <v-row>
-                                      <v-col cols="8" class="px-0">
-                                        <p>Previously worked with:</p>
-                                      </v-col>
-                                    </v-row>
-
-                                    <v-row justify="start" align="center">
-                                      <v-col
-                                        cols="auto"
-                                        v-for="(
-                                          pWItem, i
-                                        ) in previouslyWorkedWith"
-                                        :key="i"
-                                      >
-                                        <v-avatar
-                                          color="transparent"
-                                          rounded="0"
-                                          :size="pWItem.size"
-                                        >
-                                          <v-img
-                                            :src="pWItem.url"
-                                            contain
-                                            :alt="pWItem.imageAltText"
-                                          ></v-img>
-                                        </v-avatar>
-                                      </v-col>
-                                    </v-row>
-                                  </v-card-text>
-                                </v-card>
-                              </v-col>
-                              <v-col cols="auto" class="py-0">
-                                <v-avatar size="70">
-                                  <v-img src="images/about/chain.svg" contain />
-                                </v-avatar>
-                              </v-col>
-                              <v-col
-                                cols="12"
-                                data-step-no="3"
-                                class="about__content__under-deck"
-                                id="work"
-                              >
-                                <v-card class="px-10 pb-10 pt-4" flat>
-                                  <v-chip
-                                    class="mb-2 about__content__under-deck__chip"
-                                    size="large"
-                                  >
-                                    Work
-                                  </v-chip>
-                                  <v-card-text>
+                                  <v-col cols="auto">
+                                    <p>Currently working at:</p>
                                     <v-row
                                       justify="start"
                                       align="center"
                                       class="my-0"
                                     >
-                                      <v-col cols="auto">
-                                        <p>Currently working at:</p>
-                                        <v-row
-                                          justify="start"
-                                          align="center"
-                                          class="my-0"
-                                        >
-                                          <v-col cols="auto" class="py-0">
-                                            <v-img
-                                              :src="currentlyWorkingAt.url"
-                                              contain
-                                              :alt="
-                                                currentlyWorkingAt.imageAltText
-                                              "
-                                              :width="currentlyWorkingAt.size"
-                                              :height="80"
-                                            ></v-img>
-                                          </v-col>
-                                        </v-row>
-                                      </v-col>
-                                      <v-divider
-                                        vertical
-                                        class="mx-4"
-                                        v-if="!smAndDown"
-                                      />
-                                      <v-col cols="7">
-                                        <p>Previously worked At:</p>
-                                        <v-row
-                                          justify="start"
-                                          align="center"
-                                          class="my-0"
-                                        >
-                                          <v-col
-                                            cols="6"
-                                            class="py-0"
-                                            v-for="(
-                                              pWAItem, i
-                                            ) in previouslyWorkedAt"
-                                            :key="i"
-                                          >
-                                            <v-img
-                                              :src="pWAItem.url"
-                                              :width="pWAItem.size"
-                                              :height="80"
-                                              contain
-                                              :alt="pWAItem.imageAltText"
-                                            ></v-img>
-                                          </v-col>
-                                        </v-row>
+                                      <v-col cols="auto" class="py-0">
+                                        <v-img
+                                          :src="currentlyWorkingAt.url"
+                                          contain
+                                          :alt="currentlyWorkingAt.imageAltText"
+                                          :width="currentlyWorkingAt.size"
+                                          :height="80"
+                                        ></v-img>
                                       </v-col>
                                     </v-row>
-                                  </v-card-text>
-                                </v-card>
-                              </v-col>
-                              <v-col cols="auto" class="py-0">
-                                <v-avatar size="70">
-                                  <v-img src="images/about/chain.svg" contain />
-                                </v-avatar>
-                              </v-col>
-                              <v-col
-                                cols="12"
-                                data-step-no="4"
-                                class="about__content__under-deck"
-                                id="honors"
-                              >
-                                <v-card class="px-10 pb-10 pt-4" flat>
-                                  <v-chip
-                                    class="mb-2 about__content__under-deck__chip"
-                                    size="large"
-                                  >
-                                    Accomplishments
-                                  </v-chip>
-                                  <v-container fluid>
-                                    <v-row dense>
-                                      <v-col
-                                        v-for="card in certifications"
-                                        :key="card.title"
-                                        :cols="card.flex"
-                                      >
-                                        <app-certificate-card
-                                          :url="card.url"
-                                          :title="card.title"
-                                        />
-                                      </v-col>
-                                    </v-row>
-                                  </v-container>
-                                </v-card>
-                              </v-col>
-                              <v-col cols="auto" class="py-0">
-                                <v-avatar size="70">
-                                  <v-img src="images/about/chain.svg" contain />
-                                </v-avatar>
-                              </v-col>
-                              <v-col
-                                cols="12"
-                                data-step-no="5"
-                                class="about__content__under-deck"
-                                id="othercaps"
-                              >
-                                <v-card class="px-10 pb-10 pt-4" flat>
-                                  <v-chip
-                                    class="mb-2 about__content__under-deck__chip"
-                                    size="large"
-                                  >
-                                    Other caps
-                                  </v-chip>
-                                  <v-card-text>
-                                    <v-row>
-                                      <v-col cols="8" class="px-0">
-                                        <p><b>Design / UX </b></p>
-                                      </v-col>
-                                    </v-row>
-
-                                    <v-row justify="start" align="center">
-                                      <v-col cols="12">
-                                        <p>
-                                          Although I lack formal training as a
-                                          designer, I create wireframes, small
-                                          and informal mockups using Figma and
-                                          Paint. Additionally, I craft small
-                                          landing pages and have contributed to
-                                          the design of this website. You can
-                                          view my design work on my Figma
-                                          profile.
-                                        </p>
-                                      </v-col>
-                                    </v-row>
-
-                                    <v-row>
-                                      <v-col cols="8" class="px-0">
-                                        <p><b>Video Editing</b></p>
-                                      </v-col>
-                                    </v-row>
-
-                                    <v-row justify="start" align="center">
-                                      <v-col cols="12">
-                                        <p>
-                                          Though it's been a while since I've
-                                          engaged in video editing, it remains a
-                                          hobby of mine. I've previously worked
-                                          as a video editor for various
-                                          intercollegiate fests and small plays,
-                                          predominantly utilizing Vegas Pro and
-                                          Photoshop. Here are a few examples of
-                                          my video editing work.
-                                        </p>
-                                      </v-col>
-                                    </v-row>
-                                  </v-card-text>
-                                </v-card>
-                              </v-col>
-                              <v-col cols="auto" class="py-0">
-                                <v-avatar size="70">
-                                  <v-img src="images/about/chain.svg" contain />
-                                </v-avatar>
-                              </v-col>
-                              <v-col
-                                cols="12"
-                                data-step-no="6"
-                                class="about__content__under-deck"
-                                id="recents"
-                              >
-                                <v-card class="px-10 pb-10 pt-4" flat>
-                                  <v-chip
-                                    class="mb-2 about__content__under-deck__chip"
-                                    size="large"
-                                  >
-                                    And here are some of my recent learnings
-                                  </v-chip>
-                                  <v-container fluid>
-                                    <v-row justify="center">
-                                      <v-col
-                                        v-for="card in recents"
-                                        :key="card.title"
-                                        :cols="card.flex"
-                                        class="px-0"
-                                      >
-                                        <app-article-card
-                                          :url="card.url"
-                                          :title="card.title"
-                                          :type="card.type"
-                                        />
-                                      </v-col>
-                                    </v-row>
-                                  </v-container>
-                                </v-card>
-                              </v-col>
-                              <v-col cols="auto" class="py-0">
-                                <v-avatar size="260">
-                                  <v-img
-                                    src="images/about/anchor-with-chain.svg"
-                                    contain
+                                  </v-col>
+                                  <v-divider
+                                    vertical
+                                    class="mx-4"
+                                    v-if="!smAndDown"
                                   />
-                                </v-avatar>
-                              </v-col>
-                            </app-scrollama>
+                                  <v-col cols="7">
+                                    <p>Previously worked At:</p>
+                                    <v-row
+                                      justify="start"
+                                      align="center"
+                                      class="my-0"
+                                    >
+                                      <v-col
+                                        cols="6"
+                                        class="py-0"
+                                        v-for="(
+                                          pWAItem, i
+                                        ) in previouslyWorkedAt"
+                                        :key="i"
+                                      >
+                                        <v-img
+                                          :src="pWAItem.url"
+                                          :width="pWAItem.size"
+                                          :height="80"
+                                          contain
+                                          :alt="pWAItem.imageAltText"
+                                        ></v-img>
+                                      </v-col>
+                                    </v-row>
+                                  </v-col>
+                                </v-row>
+                              </v-card-text>
+                            </v-card>
                           </v-col>
-                        </v-row>
-                      </v-container>
-                    </v-card>
-                  </v-col>
-                </v-row>
-              </v-col>
-              <v-col cols="12" align-self="center">
-                <v-avatar size="340">
-                  <v-img src="images/about/submarine.svg" contain />
-                </v-avatar>
-              </v-col>
-              <v-col cols="12">
-                <app-footer />
+                          <v-col cols="auto" class="py-0">
+                            <v-avatar size="70">
+                              <v-img src="images/about/chain.svg" contain />
+                            </v-avatar>
+                          </v-col>
+                          <v-col
+                            cols="12"
+                            data-step-no="4"
+                            class="about__content__under-deck"
+                            id="honors"
+                          >
+                            <v-card class="px-10 pb-10 pt-4" flat>
+                              <v-chip
+                                class="mb-2 about__content__under-deck__chip"
+                                size="large"
+                              >
+                                Accomplishments
+                              </v-chip>
+                              <v-container fluid>
+                                <v-row dense>
+                                  <v-col
+                                    v-for="card in certifications"
+                                    :key="card.title"
+                                    :cols="card.flex"
+                                  >
+                                    <app-certificate-card
+                                      :url="card.url"
+                                      :title="card.title"
+                                    />
+                                  </v-col>
+                                </v-row>
+                              </v-container>
+                            </v-card>
+                          </v-col>
+                          <v-col cols="auto" class="py-0">
+                            <v-avatar size="70">
+                              <v-img src="images/about/chain.svg" contain />
+                            </v-avatar>
+                          </v-col>
+                          <v-col
+                            cols="12"
+                            data-step-no="5"
+                            class="about__content__under-deck"
+                            id="othercaps"
+                          >
+                            <v-card class="px-10 pb-10 pt-4" flat>
+                              <v-chip
+                                class="mb-2 about__content__under-deck__chip"
+                                size="large"
+                              >
+                                Other caps
+                              </v-chip>
+                              <v-card-text>
+                                <v-row>
+                                  <v-col cols="8" class="px-0">
+                                    <p><b>Design / UX </b></p>
+                                  </v-col>
+                                </v-row>
+
+                                <v-row justify="start" align="center">
+                                  <v-col cols="12">
+                                    <p>
+                                      Although I lack formal training as a
+                                      designer, I create wireframes, small and
+                                      informal mockups using Figma and Paint.
+                                      Additionally, I craft small landing pages
+                                      and have contributed to the design of this
+                                      website. You can view my design work on my
+                                      Figma profile.
+                                    </p>
+                                  </v-col>
+                                </v-row>
+
+                                <v-row>
+                                  <v-col cols="8" class="px-0">
+                                    <p><b>Video Editing</b></p>
+                                  </v-col>
+                                </v-row>
+
+                                <v-row justify="start" align="center">
+                                  <v-col cols="12">
+                                    <p>
+                                      Though it's been a while since I've
+                                      engaged in video editing, it remains a
+                                      hobby of mine. I've previously worked as a
+                                      video editor for various intercollegiate
+                                      fests and small plays, predominantly
+                                      utilizing Vegas Pro and Photoshop. Here
+                                      are a few examples of my video editing
+                                      work.
+                                    </p>
+                                  </v-col>
+                                </v-row>
+                              </v-card-text>
+                            </v-card>
+                          </v-col>
+                          <v-col cols="auto" class="py-0">
+                            <v-avatar size="70">
+                              <v-img src="images/about/chain.svg" contain />
+                            </v-avatar>
+                          </v-col>
+                          <v-col
+                            cols="12"
+                            data-step-no="6"
+                            class="about__content__under-deck"
+                            id="recents"
+                          >
+                            <v-card class="px-10 pb-10 pt-4" flat>
+                              <v-chip
+                                class="mb-2 about__content__under-deck__chip"
+                                size="large"
+                              >
+                                And here are some of my recent learnings
+                              </v-chip>
+                              <v-container fluid>
+                                <v-row justify="center">
+                                  <v-col
+                                    v-for="card in recents"
+                                    :key="card.title"
+                                    :cols="card.flex"
+                                    class="px-0"
+                                  >
+                                    <app-article-card
+                                      :url="card.url"
+                                      :title="card.title"
+                                      :type="card.type"
+                                    />
+                                  </v-col>
+                                </v-row>
+                              </v-container>
+                            </v-card>
+                          </v-col>
+                          <v-col cols="auto" class="py-0">
+                            <v-avatar size="260">
+                              <v-img
+                                src="images/about/anchor-with-chain.svg"
+                                contain
+                              />
+                            </v-avatar>
+                          </v-col>
+                        </app-scrollama>
+                      </v-col>
+                    </v-row>
+                  </v-container>
+                </v-card>
               </v-col>
             </v-row>
-      </div>
+          </v-col>
+          <v-col cols="12" align-self="center">
+            <v-avatar size="340">
+              <v-img src="images/about/submarine.svg" contain />
+            </v-avatar>
+          </v-col>
+          <v-col cols="12">
+            <app-footer />
+          </v-col>
+        </v-row>
+      </v-container>
+    </div>
   </v-container>
 </template>
 <script setup>
@@ -500,6 +488,13 @@ class Scene {
     pointLight.position.set(2, 2, 2);
     this.scene.add(pointLight);
     // group
+
+    const light = new THREE.HemisphereLight("#423C58", "#423C58", 2);
+    this.scene.add(light);
+
+    const frontLight = new THREE.DirectionalLight("#423C58", 1);
+    frontLight.position.set(3000, 300, 3000).normalize(); // just a direction. you can normalize
+    this.scene.add(frontLight);
 
     this.onResize();
     window.addEventListener("resize", this.onResize, false);
@@ -577,9 +572,8 @@ function setupAnimation(model) {
     scrollTrigger: {
       trigger: ".content",
       scrub: true,
-      start: "top top",
-      end: "bottom bottom",
-      markers: true,
+    start: () => `top bottom-=20`,
+      end: "bottom bottom"
     },
     defaults: { duration: sectionDuration, ease: "power2.inOut" },
   });
@@ -594,14 +588,36 @@ function setupAnimation(model) {
   tl.to(ship.rotation, { y: tau * -0.25, ease: "power1.inOut" }, delay);
   tl.to(ship.position, { z: 400, y: 200, ease: "power1.inOut" }, delay);
 }
+
 function loadModel() {
   gsap.registerPlugin(ScrollTrigger);
   const gltfLoader = new GLTFLoader();
   gltfLoader.load("model.gltf", (gltf) => {
     gltf.scene.traverse((child) => {
-     if (child.isMesh) {
+      if (child.isMesh) {
+        // eslint-disable-next-line
+        console.log(child.name);
         let material = new THREE.MeshStandardMaterial();
-        material.color = child.material.color;
+        // material.color = child.material.color;
+        if (child.name.startsWith("sail")) {
+          material.color.set("#F2EFE1");
+        } else if (
+          child.name.startsWith("ship_light_8angles_6") ||
+          child.name.startsWith("ship_light_8angles_5")
+        ) {
+          material.color.set("#F2EFE1");
+        } else if (
+          child.name.startsWith("cannon") ||
+          child.name.startsWith("steer")
+        ) {
+          // material.color.set('#F2EFE1');
+          material.color.set("black");
+          // material.wireframe = true;
+        } else {
+          material.color.set("#423C58");
+        }
+
+        //material.wireframe = true;
         child.material = material;
       }
     });
@@ -609,8 +625,16 @@ function loadModel() {
     setupAnimation(gltf.scene);
   });
 }
+const scrollDiv = ref(null);
+function onScroll(e) {
+  if (scrollDiv.value) {
+    scrollDiv.value.$el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
 
-onMounted(loadModel);
+onMounted(()=>{
+  loadModel();
+});
 const recents = ref([
   {
     title:
@@ -919,18 +943,18 @@ const progressValue = computed(() =>
 );
 
 const startColor = ref("#FFFFFF");
-const endColor = ref("#91D5FF");
+const endColor = ref("#423C58");
 if (progressValue.value <= 10) {
   startColor.value = "#FFFFFF";
   endColor.value = "#FFFFFF";
 } else if (progressValue.value == 100) {
-  startColor.value = "#91D5FF";
-  endColor.value = "#91D5FF";
+  startColor.value = "#423C58";
+  endColor.value = "#423C58";
 }
 
 const gradientBackground = computed(() => {
   const startColor = "#FFFFFF";
-  const endColor = "#91D5FF";
+  const endColor = "#423C58";
 
   const interpolateColor = (start, end, progress) => {
     const r = Math.round((end.r - start.r) * (progress / 100)) + start.r;
@@ -961,6 +985,7 @@ const onItemClickHandler = (targetId) => {
   const element = document.getElementById(targetId);
   element.scrollIntoView({ behavior: "smooth", block: "start" });
 };
+
 </script>
 <style lang="scss">
 canvas {
@@ -975,12 +1000,22 @@ canvas {
 }
 
 .content {
+    background:
+    radial-gradient(#F2EFE1 3px, transparent 4px),
+    radial-gradient(#F2EFE1 3px, transparent 4px),
+    linear-gradient(#A3BDAE 4px, transparent 0),
+    linear-gradient(45deg, transparent 74px, transparent 75px, #cecccc 75px, #d0d0d0 76px, transparent 77px, transparent 109px),
+    linear-gradient(-45deg, transparent 75px, transparent 76px, #cac7c7 76px, #b9b7b7 77px, transparent 78px, transparent 109px),
+    #A3BDAE;
+    background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
+    background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
   position: relative;
   z-index: 1;
   .section {
+   
+
+    border: 1px solid red;
     position: relative;
-    padding: var(--padding);
-    --pad2: calc(var(--padding) * 2);
     width: calc(100vw - var(--pad2));
     height: 260vh;
     margin: 0 auto;
@@ -997,6 +1032,7 @@ canvas {
   }
 
   .about {
+    border: 1px solid green;
     position: relative;
     max-height: 100vh;
     overflow: auto;
@@ -1012,17 +1048,18 @@ canvas {
     &__content {
       &__deck {
         border-radius: 4px 4px 50px 50px;
-        border: 6px solid #91d5ff;
+        border: 6px solid #423c58;
         background: #fff;
       }
       &__under-deck {
         border-radius: 50px;
-        border: 6px solid #91d5ff;
+        border: 6px solid #423c58;
         background: #fff;
         &__chip {
           border-radius: 12px;
-          border: 3px solid #91d5ff;
+          border: 3px solid #423c58;
           background: #000;
+
           color: #ffff;
           font-family: Inter;
           font-size: 17px;
