@@ -1,13 +1,26 @@
 <template>
-  <v-container fluid style="background: #a3bdae">
-    <canvas class="webgl"></canvas>
-    <div class="content">
-      <div class="loading">Loading</div>
-      <div class="scroll-cta"></div>
-      <div class="section"></div>
-      <v-container fluid>
-        <v-row justify="center" class="about" id="about" ref="scrollDiv" @scroll="onScroll">
-          <v-col cols="11">
+  <v-container fluid :class="{'px-0':$vuetify.display.mdAndDown}">
+    <canvas class="webgl" v-if="$vuetify.display.mdAndUp"></canvas>
+    <div class="content" >
+      <div class="loading"  v-if="$vuetify.display.mdAndUp">Loading</div>
+      <div class="scroll-cta"  v-if="$vuetify.display.mdAndUp"></div>
+      <div class="section"  v-if="$vuetify.display.mdAndUp"></div>
+      <v-row justify="center"  v-if="$vuetify.display.mdAndUp">
+        <v-col cols="auto" class="pb-12">
+          <v-avatar size="80" @click="onScrollToHandler">
+            <v-img class="mouse-move" src="mouse.png" />
+          </v-avatar>
+        </v-col>
+      </v-row>
+      <v-container fluid :class="{'px-0':$vuetify.display.mdAndDown}">
+        <v-row
+          justify="center"
+          class="about"
+          id="about"
+          ref="scrollDiv"
+          @scroll="onScroll"
+        >
+          <v-col :cols="$vuetify.display.mdAndUp ? 11 : 12">
             <v-row justify="start">
               <v-col
                 cols="3"
@@ -572,8 +585,8 @@ function setupAnimation(model) {
     scrollTrigger: {
       trigger: ".content",
       scrub: true,
-    start: () => `top bottom-=20`,
-      end: "bottom bottom"
+      start: () => `top bottom-=20`,
+      end: "bottom bottom",
     },
     defaults: { duration: sectionDuration, ease: "power2.inOut" },
   });
@@ -601,6 +614,7 @@ function loadModel() {
         // material.color = child.material.color;
         if (child.name.startsWith("sail")) {
           material.color.set("#F2EFE1");
+          //material.color.set(child.material.color);
         } else if (
           child.name.startsWith("ship_light_8angles_6") ||
           child.name.startsWith("ship_light_8angles_5")
@@ -614,7 +628,8 @@ function loadModel() {
           material.color.set("black");
           // material.wireframe = true;
         } else {
-          material.color.set("#423C58");
+          material.color.set("#463F3A");
+          //material.color.set(child.material.color)
         }
 
         //material.wireframe = true;
@@ -628,13 +643,21 @@ function loadModel() {
 const scrollDiv = ref(null);
 function onScroll(e) {
   if (scrollDiv.value) {
-    scrollDiv.value.$el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    scrollDiv.value.$el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
 
-onMounted(()=>{
+onMounted(() => {
   loadModel();
 });
+const onItemClickHandler = (targetId) => {
+  const element = document.getElementById(targetId);
+  element.scrollIntoView({ behavior: "smooth", block: "start" });
+};
+function onScrollToHandler() {
+  onItemClickHandler("about");
+}
+
 const recents = ref([
   {
     title:
@@ -981,11 +1004,6 @@ const hexToRgb = (hex) => {
   const b = bigint & 255;
   return { r, g, b };
 };
-const onItemClickHandler = (targetId) => {
-  const element = document.getElementById(targetId);
-  element.scrollIntoView({ behavior: "smooth", block: "start" });
-};
-
 </script>
 <style lang="scss">
 canvas {
@@ -1000,21 +1018,9 @@ canvas {
 }
 
 .content {
-    background:
-    radial-gradient(#F2EFE1 3px, transparent 4px),
-    radial-gradient(#F2EFE1 3px, transparent 4px),
-    linear-gradient(#A3BDAE 4px, transparent 0),
-    linear-gradient(45deg, transparent 74px, transparent 75px, #cecccc 75px, #d0d0d0 76px, transparent 77px, transparent 109px),
-    linear-gradient(-45deg, transparent 75px, transparent 76px, #cac7c7 76px, #b9b7b7 77px, transparent 78px, transparent 109px),
-    #A3BDAE;
-    background-size: 109px 109px, 109px 109px,100% 6px, 109px 109px, 109px 109px;
-    background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
   position: relative;
   z-index: 1;
   .section {
-   
-
-    border: 1px solid red;
     position: relative;
     width: calc(100vw - var(--pad2));
     height: 260vh;
@@ -1030,9 +1036,16 @@ canvas {
       text-align: right;
     }
   }
+.about {
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+  overflow-y: scroll; 
+}
 
+.about::-webkit-scrollbar {
+  display: none; /* for Chrome, Safari, and Opera */
+}
   .about {
-    border: 1px solid green;
     position: relative;
     max-height: 100vh;
     overflow: auto;
@@ -1091,5 +1104,31 @@ canvas {
 
 .scrollable-elements {
   overflow-y: auto;
+}
+
+.mouse-move {
+  position: absolute;
+  max-width: 70px;
+  cursor: pointer;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  animation: mouse-move 1.5s linear infinite;
+}
+
+@keyframes mouse-move {
+  0%,
+  50%,
+  100% {
+    transform: translateY(0);
+  }
+
+  12.5%,
+  37.5% {
+    transform: translateY(3px);
+  }
+
+  25% {
+    transform: translateY(8px);
+  }
 }
 </style>
