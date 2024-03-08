@@ -3,7 +3,7 @@
     <v-container fluid class="article__container py-6">
       <v-row justify="space-between">
         <v-col cols="auto" class="py-0">
-          <v-chip class="mb-2 article__container__chip" size="small"> Dev </v-chip>
+          <v-chip class="mb-2 article__container__chip" size="small"> {{tag}} </v-chip>
         </v-col>
         <v-col cols="auto" class="py-0">
           <v-avatar size="20" rounded="0">
@@ -68,6 +68,10 @@ const props = defineProps({
     type: String,
     default: "blog",
   },
+  tag: {
+    type: String,
+    default: "",
+  },
 });
 const isBlog = computed(() => props.type === "blog");
 function goToDetails() {
@@ -76,20 +80,18 @@ function goToDetails() {
 </script>
 <style lang="scss" scoped>
 .article {
-  border: 1px solid #DDDEE0;
+  border: 0.5px solid #a3bdae;
   border-radius: 12px;
-  background: #423C58;
    &__container{
-      border: 1px solid #DDDEE0;
       border-radius: 8px;
-      background: white;
+      background: #F3F2F2;
  &__chip {
     border-radius: 12px;
-    border: 3px solid #423C58;
-    background: #000;
+    border: 3px solid #a3bdae;
+    background: #a3bdae;
     color: #ffff;
     font-family: Inter;
-    font-size: 17px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 700;
     line-height: 19px;

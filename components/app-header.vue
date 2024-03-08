@@ -65,6 +65,7 @@ function showResume() {
 .app-header-wrapper {
   .app-header {
     padding: 0.3rem;
+    display: flex;
   }
   background: #F2EFE1;
   border-radius: 24px;

@@ -1,27 +1,38 @@
 <template>
-  <v-container fluid :class="{'px-0':$vuetify.display.mdAndDown}" class="home">
+  <v-container
+    fluid
+    :class="{ 'px-0': $vuetify.display.mdAndDown }"
+    class="home"
+  >
     <canvas class="webgl" v-if="$vuetify.display.mdAndUp"></canvas>
-    <div class="content" >
-      <div class="loading"  v-if="$vuetify.display.mdAndUp">Loading</div>
-      <div class="scroll-cta"  v-if="$vuetify.display.mdAndUp"></div>
-      <div class="section"  v-if="$vuetify.display.mdAndUp"></div>
-      <v-row justify="center"  v-if="$vuetify.display.mdAndUp">
+    <div class="content">
+      <div class="loading" v-if="$vuetify.display.mdAndUp">Loading</div>
+      <div class="scroll-cta" v-if="$vuetify.display.mdAndUp"></div>
+      <div class="section" v-if="$vuetify.display.mdAndUp"></div>
+      <v-row justify="center" v-if="$vuetify.display.mdAndUp">
         <v-col cols="auto" class="pb-12">
           <v-avatar size="80" @click="onScrollToHandler">
             <v-img class="mouse-move" src="mouse.png" />
           </v-avatar>
         </v-col>
       </v-row>
-      <v-container fluid :class="{'px-0':$vuetify.display.mdAndDown}">
+      <v-container fluid :class="{ 'px-0': $vuetify.display.mdAndDown }">
         <v-row
           justify="center"
-          class="about"
+          class="about pt-10"
           id="about"
           ref="scrollDiv"
           @scroll="onScroll"
+          :class="{ 'px-0': $vuetify.display.mdAndDown }"
         >
-          <v-col :cols="$vuetify.display.mdAndUp ? 11 : 12">
-            <v-row justify="start">
+          <v-col
+            :cols="$vuetify.display.mdAndUp ? 11 : 12"
+            :class="{ 'px-0': $vuetify.display.mdAndDown }"
+          >
+            <v-row
+              justify="start"
+              :class="{ 'px-0': $vuetify.display.mdAndDown }"
+            >
               <v-col
                 cols="3"
                 class="about__menu"
@@ -61,9 +72,13 @@
               <v-col
                 :cols="$vuetify.display.mdAndUp ? 9 : 12"
                 class="about__content"
+                :class="{ 'px-0': $vuetify.display.mdAndDown }"
               >
                 <v-card class="pa-0" flat color="transparent">
-                  <v-container fluid>
+                  <v-container
+                    fluid
+                    :class="{ 'px-0': $vuetify.display.mdAndDown }"
+                  >
                     <v-row align="center" justify="center">
                       <v-col cols="10">
                         <app-scrollama
@@ -73,7 +88,13 @@
                             ({ element }) => handleStepProgress(element)
                           "
                         >
-                          <v-col cols="auto" class="py-0 pl-0 pr-5 mr-10">
+                          <v-col
+                            cols="auto"
+                            class="py-0 pl-0 pr-5 mr-10"
+                            :class="{
+                              'py-0 pl-0 pr-0 mr-0': $vuetify.display.mdAndDown,
+                            }"
+                          >
                             <v-avatar
                               size="120"
                               rounded="0"
@@ -87,11 +108,65 @@
                             class="about__content__deck"
                             style="position: relative; z-index: 2"
                           >
-                            <v-card class="pa-0 text-center" flat>
-                              <h1 class="text-h6">
+                            <v-row justify="center">
+                              <v-col cols="6" class="pa-0">
+                                <div
+                                  class="about__content__deck__shape-1-wrapper"
+                                >
+                                  <div
+                                    class="about__content__deck__shape-1-wrapper__shape-1"
+                                  ></div>
+                                </div>
+                                <div
+                                  class="about__content__deck__shape-2-wrapper"
+                                >
+                                  <div
+                                    class="about__content__deck__shape-2-wrapper__shape-2"
+                                  ></div>
+                                </div>
+                                <div
+                                  class="about__content__deck__shape-3-wrapper"
+                                >
+                                  <div
+                                    class="about__content__deck__shape-3-wrapper__shape-3 skewed-left-v2"
+                                  ></div>
+                                  <div
+                                    class="about__content__deck__shape-3-wrapper__shape-3 skewed-right-v2"
+                                  ></div>
+                                </div>
+                                <div
+                                  class="about__content__deck__shape-4-wrapper"
+                                >
+                                  <div
+                                    class="about__content__deck__shape-4-wrapper__shape-4 skewed-left"
+                                  ></div>
+                                  <div
+                                    class="about__content__deck__shape-4-wrapper__shape-4 skewed-right"
+                                  ></div>
+                                </div>
+                                <div
+                                  class="about__content__deck__shape-5-wrapper"
+                                >
+                                  <div
+                                    class="about__content__deck__shape-5-wrapper__shape-5 skewed-left-v3"
+                                  ></div>
+                                  <div
+                                    class="about__content__deck__shape-5-wrapper__shape-5 skewed-right-v3"
+                                  ></div>
+                                </div>
+                              </v-col>
+                            </v-row>
+
+                            <!--  <v-card class="pa-0 text-center" color="transparent" flat>
+                              <span
+                                :class="{
+                                  'text-body': $vuetify.display.smAndDown,
+                                  'text-h6': $vuetify.display.mdAndUp,
+                                }"
+                              >
                                 Quality is not an act it is a habit - Aristotle
-                              </h1>
-                            </v-card>
+                              </span>
+                            </v-card> -->
                           </v-col>
                           <v-col cols="auto" class="py-0">
                             <v-avatar size="70">
@@ -104,11 +179,19 @@
                             class="about__content__under-deck"
                             id="whoami"
                           >
-                            <v-card class="pa-10" flat>
-                              <p>Hey! I am Akshay</p>
+                            <v-card
+                              class="pa-10"
+                              flat
+                              :class="{
+                                'text-caption': $vuetify.display.smAndDown,
+                                'text-body': $vuetify.display.mdAndUp,
+                              }"
+                            >
+                              <p>Hey! I am <b>Akshay</b></p>
                               <br />
                               <p>
-                                Frontend engineer based in Bengaluru, India.
+                                Frontend engineer based in <b>Bengaluru</b>,
+                                India.
                               </p>
                               <p>
                                 I specialize in developing user-centric,
@@ -116,10 +199,12 @@
                                 focus is on writing clean, maintainable code
                                 with a balance of considering time constraints
                                 for efficient delivery.I am passionate about
-                                collaborating with talented individuals to build
-                                products that make a meaningful impact. It
-                                brings me joy to learn and grow through the
-                                process.
+                                collaborating with talented individuals to
+                                <b
+                                  >build products that make a meaningful
+                                  impact</b
+                                >. It brings me joy to learn and grow through
+                                the process.
                               </p>
                               <br />
                               <p>
@@ -141,15 +226,25 @@
                             data-step-no="2"
                             class="about__content__under-deck"
                             id="techstack"
+                            :class="{ 'px-0': $vuetify.display.mdAndDown }"
                           >
                             <v-card class="px-10 pb-10 pt-4" flat>
                               <v-chip
-                                class="mb-2 about__content__under-deck__chip"
+                                class="mb-2 about__content__under-deck__chip text-uppercase"
                                 size="large"
+                                :class="{
+                                  'text-body-1': $vuetify.display.smAndDown,
+                                  'text-h6': $vuetify.display.mdAndUp,
+                                }"
                               >
                                 Tech Stack
                               </v-chip>
-                              <v-card-text>
+                              <v-card-text
+                                :class="{
+                                  'text-caption': $vuetify.display.smAndDown,
+                                  'text-body': $vuetify.display.mdAndUp,
+                                }"
+                              >
                                 <v-row>
                                   <v-col cols="8" class="px-0">
                                     <p>Actively engrossed in working with:</p>
@@ -214,15 +309,26 @@
                             data-step-no="3"
                             class="about__content__under-deck"
                             id="work"
+                            :class="{ 'px-0': $vuetify.display.mdAndDown }"
                           >
                             <v-card class="px-10 pb-10 pt-4" flat>
                               <v-chip
-                                class="mb-2 about__content__under-deck__chip"
+                                class="mb-2 about__content__under-deck__chip text-uppercase"
                                 size="large"
+                                :class="{
+                                  'text-body-1': $vuetify.display.smAndDown,
+                                  'text-h6': $vuetify.display.mdAndUp,
+                                }"
                               >
                                 Work
                               </v-chip>
-                              <v-card-text>
+                              <v-card-text
+                                :class="{
+                                  'px-0': $vuetify.display.mdAndDown,
+                                  'text-caption': $vuetify.display.smAndDown,
+                                  'text-body': $vuetify.display.mdAndUp,
+                                }"
+                              >
                                 <v-row
                                   justify="start"
                                   align="center"
@@ -259,7 +365,9 @@
                                       class="my-0"
                                     >
                                       <v-col
-                                        cols="6"
+                                        :cols="
+                                          $vuetify.display.mdAndDown ? 12 : 6
+                                        "
                                         class="py-0"
                                         v-for="(
                                           pWAItem, i
@@ -290,24 +398,42 @@
                             data-step-no="4"
                             class="about__content__under-deck"
                             id="honors"
+                            :class="{ 'px-0': $vuetify.display.mdAndDown }"
                           >
-                            <v-card class="px-10 pb-10 pt-4" flat>
+                            <v-card
+                              class="px-10 pb-10 pt-4"
+                              flat
+                              :class="{ 'px-0': $vuetify.display.mdAndDown }"
+                            >
                               <v-chip
-                                class="mb-2 about__content__under-deck__chip"
+                                class="mb-2 about__content__under-deck__chip text-uppercase"
                                 size="large"
+                                :class="{
+                                  'text-body-1': $vuetify.display.smAndDown,
+                                  'text-h6': $vuetify.display.mdAndUp,
+                                }"
                               >
                                 Accomplishments
                               </v-chip>
-                              <v-container fluid>
+                              <v-container
+                                fluid
+                                :class="{ 'px-0': $vuetify.display.mdAndDown }"
+                              >
                                 <v-row dense>
                                   <v-col
                                     v-for="card in certifications"
                                     :key="card.title"
-                                    :cols="card.flex"
+                                    :cols="$vuetify.display.mdAndUp ? 6 : 12"
                                   >
                                     <app-certificate-card
                                       :url="card.url"
                                       :title="card.title"
+                                      :class="{
+                                        'px-0': $vuetify.display.mdAndDown,
+                                        'text-caption':
+                                          $vuetify.display.smAndDown,
+                                        'text-body': $vuetify.display.mdAndUp,
+                                      }"
                                     />
                                   </v-col>
                                 </v-row>
@@ -324,15 +450,25 @@
                             data-step-no="5"
                             class="about__content__under-deck"
                             id="othercaps"
+                            :class="{ 'px-0': $vuetify.display.mdAndDown }"
                           >
                             <v-card class="px-10 pb-10 pt-4" flat>
                               <v-chip
-                                class="mb-2 about__content__under-deck__chip"
+                                class="mb-2 about__content__under-deck__chip text-uppercase"
                                 size="large"
+                                :class="{
+                                  'text-body-1': $vuetify.display.smAndDown,
+                                  'text-h6': $vuetify.display.mdAndUp,
+                                }"
                               >
                                 Other caps
                               </v-chip>
-                              <v-card-text>
+                              <v-card-text
+                                :class="{
+                                  'text-caption': $vuetify.display.smAndDown,
+                                  'text-body': $vuetify.display.mdAndUp,
+                                }"
+                              >
                                 <v-row>
                                   <v-col cols="8" class="px-0">
                                     <p><b>Design / UX </b></p>
@@ -386,26 +522,36 @@
                             data-step-no="6"
                             class="about__content__under-deck"
                             id="recents"
+                            :class="{ 'px-0': $vuetify.display.mdAndDown }"
                           >
                             <v-card class="px-10 pb-10 pt-4" flat>
                               <v-chip
-                                class="mb-2 about__content__under-deck__chip"
+                                class="mb-2 about__content__under-deck__chip text-uppercase"
                                 size="large"
+                                :class="{
+                                  'text-body-1': $vuetify.display.smAndDown,
+                                  'text-h6': $vuetify.display.mdAndUp,
+                                }"
                               >
-                                And here are some of my recent learnings
+                                Recent learnings
                               </v-chip>
                               <v-container fluid>
                                 <v-row justify="center">
                                   <v-col
                                     v-for="card in recents"
                                     :key="card.title"
-                                    :cols="card.flex"
+                                    :cols="$vuetify.display.smAndDown ? 12 : 8"
                                     class="px-0"
                                   >
                                     <app-article-card
                                       :url="card.url"
                                       :title="card.title"
                                       :type="card.type"
+                                      :class="{
+                                        'text-caption':
+                                          $vuetify.display.smAndDown,
+                                        'text-body': $vuetify.display.mdAndUp,
+                                      }"
                                     />
                                   </v-col>
                                 </v-row>
@@ -434,7 +580,7 @@
             </v-avatar>
           </v-col>
           <v-col cols="12">
-            <app-footer />
+            <app-footer hide-back-btn />
           </v-col>
         </v-row>
       </v-container>
@@ -442,7 +588,7 @@
   </v-container>
 </template>
 <script setup>
-import { ref, computed, onMounted,onUnmounted } from "vue";
+import { ref, computed, onMounted, onUnmounted } from "vue";
 import { useDisplay } from "vuetify";
 const { smAndDown } = useDisplay();
 const currStep = ref(0);
@@ -652,17 +798,16 @@ onMounted(() => {
 });
 
 onUnmounted(() => {
-  console.log("unmounted")
+  console.log("unmounted");
   const canvases = document.querySelectorAll("canvas.webgl");
   // console.log("unmounted",canvas,canvas.parentNode)
-  if(canvases.length>0){
-    canvases.forEach(canvas=>{
- if(canvas && canvas.parentNode){
-  canvas.parentNode.removeChild(canvas);
+  if (canvases.length > 0) {
+    canvases.forEach((canvas) => {
+      if (canvas && canvas.parentNode) {
+        canvas.parentNode.removeChild(canvas);
+      }
+    });
   }
-    })
-  }
- 
 });
 
 const onItemClickHandler = (targetId) => {
@@ -1031,8 +1176,8 @@ canvas {
   visibility: hidden;
   opacity: 0;
 }
-.home{
-   background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
+.home {
+  background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;
   background-color: transparent;
   background-image: linear-gradient(
       0deg,
@@ -1072,15 +1217,15 @@ canvas {
       text-align: right;
     }
   }
-.about {
-  -ms-overflow-style: none; /* for Internet Explorer, Edge */
-  scrollbar-width: none; /* for Firefox */
-  overflow-y: scroll; 
-}
+  .about {
+    -ms-overflow-style: none; /* for Internet Explorer, Edge */
+    scrollbar-width: none; /* for Firefox */
+    overflow-y: scroll;
+  }
 
-.about::-webkit-scrollbar {
-  display: none; /* for Chrome, Safari, and Opera */
-}
+  .about::-webkit-scrollbar {
+    display: none; /* for Chrome, Safari, and Opera */
+  }
   .about {
     position: relative;
     max-height: 100vh;
@@ -1097,21 +1242,70 @@ canvas {
     &__content {
       &__deck {
         border-radius: 4px 4px 50px 50px;
-        border: 6px solid #423c58;
-        background: #fff;
+        width: 100%;
+        &__shape-1-wrapper {
+          display: flex;
+          justify-content: space-between;
+          &__shape-1 {
+            flex: 1;
+            height: 100px;
+            background-color: #292627;
+          }
+        }
+        &__shape-2-wrapper {
+          display: flex;
+          justify-content: space-between;
+          &__shape-2 {
+            flex: 1;
+            margin-left: 1.3rem;
+            margin-right: 1.3rem;
+            height: 100px;
+            background-color: #1d1a1b;
+          }
+        }
+        &__shape-3-wrapper {
+          display: flex;
+          justify-content: space-between;
+          &__shape-3 {
+            flex: 1;
+            height: 100px;
+            background-color: #292627;
+          }
+        }
+        &__shape-4-wrapper {
+          display: flex;
+          justify-content: space-between;
+          margin-left: 0.6rem;
+          margin-right: 0.6rem;
+          &__shape-4 {
+            flex: 1;
+            height: 100px;
+            background-color: #1d1a1b;
+          }
+        }
+        &__shape-5-wrapper {
+          display: flex;
+          justify-content: space-between;
+          margin-left: 4.4rem;
+          margin-right: 4.4rem;
+          &__shape-5 {
+            flex: 1;
+            height: 100px;
+            background-color: #292627;
+          }
+        }
       }
       &__under-deck {
         border-radius: 50px;
         border: 6px solid #423c58;
         background: #fff;
+        overflow: hidden;
         &__chip {
           border-radius: 12px;
           border: 3px solid #423c58;
           background: #000;
-
           color: #ffff;
           font-family: Inter;
-          font-size: 17px;
           font-style: normal;
           font-weight: 700;
           line-height: 19px;
@@ -1166,5 +1360,32 @@ canvas {
   25% {
     transform: translateY(8px);
   }
+}
+.skewed-left {
+  transform: skewX(20deg);
+  margin-right: -30px;
+}
+
+.skewed-right {
+  transform: skewX(-20deg);
+  margin-left: -30px;
+}
+.skewed-left-v2 {
+  transform: skewX(-10deg);
+  margin-right: -20px;
+}
+
+.skewed-right-v2 {
+  transform: skewX(10deg);
+  margin-left: -20px;
+}
+.skewed-left-v3 {
+  transform: skewX(40deg);
+  margin-right: -43px;
+}
+
+.skewed-right-v3 {
+  transform: skewX(-40deg);
+  margin-left: -43px;
 }
 </style>

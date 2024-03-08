@@ -16,6 +16,7 @@ export default defineNuxtConfig({
       families: {
         Roboto: true,
         Poppins:true,
+        'JetBrains Mono':true,
         Inter: [400, 700],
          'Josefin+Sans': true,
         Lato: [100, 300],
