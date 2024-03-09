@@ -18,7 +18,7 @@
         </v-col>
       </v-row>
       <v-row align="center">
-        <v-col cols="12" class="pb-0 pt-1">
+        <v-col cols="12" class="pb-0 pt-1 article__container__description">
           <p class="text-body-2">{{ description }}</p>
         </v-col>
       </v-row>
@@ -94,6 +94,16 @@ const formattedDate = computed(() => new Date(props.date).toLocaleString('en-US'
    &__container{
       border-radius: 8px;
       background: #F3F2F2;
+      &__description{
+        max-height: 3rem;
+        overflow: hidden;
+        position: relative;
+        display: inline-block;
+        text-decoration: none;
+        text-overflow: ellipsis;
+        white-space: normal;
+        color: #000;
+      }
  &__chip {
     border-radius: 12px;
     border: 3px solid #a3bdae;
