@@ -1,60 +1,5 @@
 <template>
-  <v-card class="project" height="300" v-if="isPrototype" flat>
-    <v-img
-      :src="imageUrl"
-      class="align-end"
-      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-      height="250px"
-      cover
-    >
-      <v-card color="transparent" class="project__prototype-container" flat>
-        <div class="project__prototype-container__header">
-          <v-container fluid>
-            <v-row justify="end">
-              <v-col cols="auto" class="text-white">
-                <v-chip
-                  class="mb-2 project__prototype-container__chip"
-                  size="small"
-                >
-                  {{ type }}
-                </v-chip>
-              </v-col>
-            </v-row>
-          </v-container>
-        </div>
-        <div class="project__prototype-container__spacer"></div>
-        <v-spacer />
-        <div class="project__prototype-container__footer">
-          <v-container fluid>
-            <v-row justify="space-between">
-              <v-col cols="auto" class="text-white">{{ title }} </v-col>
-              <v-col cols="auto" class="text-white">{{ date }} </v-col></v-row
-            >
-          </v-container>
-        </div>
-      </v-card>
-    </v-img>
-    <v-card-actions>
-      <v-spacer></v-spacer>
-      <v-btn flat>
-        <template v-slot:prepend>
-          <v-avatar color="transparent" rounded="0">
-            <v-img
-              src="images/about/view.svg"
-              :height="20"
-              contain
-              alt="view"
-              class="px-0"
-            ></v-img>
-          </v-avatar>
-        </template>
-        <div>View</div>
-      </v-btn>
-
-      <v-spacer></v-spacer>
-    </v-card-actions>
-  </v-card>
-  <v-card class="project" height="300" v-else flat>
+  <v-card class="project" height="300" flat  @click="goToDetails">
     <v-img
       :src="imageUrl"
       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
@@ -67,7 +12,7 @@
             <v-row justify="end">
               <v-col cols="auto" class="text-white">
                 <v-chip
-                  class="mb-2 project__others-container__chip"
+                  class="mb-2 project__others-container__chip px-4 py-1"
                   size="small"
                 >
                   {{ type }}
@@ -80,8 +25,29 @@
         <v-spacer />
         <div class="project__others-container__footer">
           <v-container fluid>
-            <v-row justify="space-between">
+            <v-row justify="space-between" align="center">
               <v-col cols="auto" class="text-white">{{ title }} </v-col>
+              <v-col cols="auto"
+                ><v-btn
+                  size="small"
+                  class=" text-caption text-uppercase font-weight-bold"
+                  rounded
+                >
+                  Check details
+                </v-btn>
+              </v-col>
+               <v-col cols="auto"
+                v-if="hasDemoLink"
+                ><v-btn
+                  block
+                  size="small"
+                  class="text-overline font-weight-bold"
+                  rounded
+                 
+                >
+                  Demo
+                </v-btn>
+              </v-col>
               <v-col cols="auto" class="text-white">{{ date }} </v-col></v-row
             >
           </v-container>
@@ -105,51 +71,38 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  to: {
+    type: String,
+    default: "blog",
+  },
   type: {
     type: String,
     default: "",
   },
+  hasDemoLink:{
+    type:Boolean,
+    default: false
+  }
 });
 // type === 'Prototype'
-const isPrototype = computed(()=>props.type==='Prototype')
+const isPrototype = computed(() => props.type === "Prototype");
+function goToDetails() {
+  navigateTo(props.to);
+}
 </script>
 <style lang="scss" scoped>
 .project {
   border-radius: 12px;
-
-  &__prototype-container {
-    &__chip {
-      border-radius: 12px;
-      border: 3px solid #000;
-      background: #91d5ff;
-      color: #000;
-      font-family: Inter;
-      font-size: 13px;
-      padding: 0.5rem;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 19px;
-      text-transform: uppercase;
-    }
-    &__header {
-      height: 50px;
-      background: transparent;
-    }
-    &__spacer {
-      height: 150px;
-    }
-    &__footer {
-      height: 50px;
-    }
-  }
+  cursor: pointer;
   &__others-container {
     &__chip {
       border-radius: 12px;
-      border: 3px solid #000;
-      background: #91d5ff;
-      color: #000;
-      font-family: Inter;
-      font-size: 13px;
+      border: 0.1px solid #ffff;
+      box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+      background: #a3bdae;
+      color: #ffff;
+      font-family: 'Poppins';
+      font-size: 12px;
       padding: 0.5rem;
       font-style: normal;
       font-weight: 700;

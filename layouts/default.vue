@@ -45,9 +45,9 @@
           </v-container>
         </v-main>
       </v-row>
-      <row v-if="$vuetify.display.smAndDown">
+      <v-row v-if="$vuetify.display.smAndDown">
         <app-navigation />
-      </row>
+      </v-row>
     </v-container>
   </v-layout>
 </template>

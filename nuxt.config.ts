@@ -1,5 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  content: {
+    highlight: {
+      theme: "github-dark",
+  },
+  },
   css: ['vuetify/lib/styles/main.sass', '@mdi/font/css/materialdesignicons.min.css'],
   build: {
     transpile: ['vuetify'],
@@ -13,7 +18,9 @@ export default defineNuxtConfig({
   modules: [
     '@nuxt/content',
     ['@nuxtjs/google-fonts', {
+      display: "swap",
       families: {
+        "Bebas Neue":true,
         Roboto: true,
         Poppins:true,
         'JetBrains Mono':true,
