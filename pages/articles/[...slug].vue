@@ -3,6 +3,14 @@ const route = useRoute();
 const { data } = await useAsyncData("article", () =>
   queryContent(`articles/${route.params.slug[0]}`).findOne()
 );
+import { ref } from "vue";
+const markdownElement = ref(null);
+function scrollToBlock(id) {
+  if (markdownElement.value) {
+    const element = document.getElementById(id);
+    element.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+}
 </script>
 <template>
   <v-container
@@ -10,6 +18,20 @@ const { data } = await useAsyncData("article", () =>
     class="article"
     :class="{ 'pa-0': $vuetify.display.smAndDown }"
   >
+    <div class="table-of-contents-wrapper" v-if="$vuetify.display.mdAndUp">
+      <ul class="table-of-contents">
+        <h4>TABLE OF CONTENTS</h4>
+        <li
+          v-for="item in data.body.children.filter(
+            (child) => child.tag === 'h2'
+          )"
+          :key="item.children[0].value"
+          @click="scrollToBlock(item.props.id)"
+        >
+          <a> {{ item.children[0].value }}</a>
+        </li>
+      </ul>
+    </div>
     <v-row justify="center">
       <v-col
         :cols="$vuetify.display.mdAndUp ? 9 : 12"
@@ -21,26 +43,38 @@ const { data } = await useAsyncData("article", () =>
               <div class="article__title-block__title">
                 {{ doc.title }}
               </div>
-              <div class="article__title-block__posted-on">
-                <v-avatar color="transparent" :size="$vuetify.display.smAndDown?20:30">
-                  <v-img
-                    src="/images/calendar.svg"
-                    contain
-                    alt="posted on"
-                    :height="$vuetify.display.smAndDown?15:20"
-                    class="article__title-block__posted-on__image"
-                  ></v-img>
-                </v-avatar>
-                <span class="article__title-block__posted-on__title"
-                  >Posted on
+              <div class="article__title-block__details">
+                <div class="article__title-block__details__posted-on">
+                  <v-avatar
+                    color="transparent"
+                    :size="$vuetify.display.smAndDown ? 20 : 30"
+                  >
+                    <v-img
+                      src="/images/calendar.svg"
+                      contain
+                      alt="posted on"
+                      :height="$vuetify.display.smAndDown ? 15 : 20"
+                      class="article__title-block__details__posted-on__image"
+                    ></v-img>
+                  </v-avatar>
+                  <span class="article__title-block__details__posted-on__title"
+                    >Posted on
+                  </span>
+                  <span class="article__title-block__details__posted-on__text">
+                    {{ doc.postedon }}</span
+                  >
+                </div>
+                <span class="article__title-block__details__reading-time"
+                  >{{ doc.readingTime.text }}
                 </span>
-                <span class="article__title-block__posted-on__text">
-                  {{ doc.postedon }}</span
-                >
               </div>
             </div>
 
-            <ContentRendererMarkdown :value="doc" class="article__container" />
+            <ContentRendererMarkdown
+              :value="doc"
+              ref="markdownElement"
+              class="article__container"
+            />
           </article>
         </ContentDoc>
       </v-col>
@@ -49,6 +83,33 @@ const { data } = await useAsyncData("article", () =>
 </template>
 <style lang="scss" scoped>
 .article {
+  position: relative;
+  .table-of-contents-wrapper {
+    position: absolute;
+
+    .table-of-contents {
+      max-width: 16rem;
+      background: #f2efe1;
+      margin: 1rem;
+      right: 0px;
+      top: 30%;
+      padding: 1rem;
+      border-top-right-radius: 24px;
+      border-bottom-right-radius: 24px;
+      position: fixed;
+      li {
+        cursor: pointer;
+        list-style: none;
+        opacity: 0.6;
+        font-size: 14px;
+        margin-left: 0.5rem;
+        font-family: Inter;
+      }
+      li:hover {
+        opacity: 1;
+      }
+    }
+  }
   &__title-block {
     padding: 4rem 0px 2rem 0px;
     --angle: -1deg;
@@ -63,41 +124,52 @@ const { data } = await useAsyncData("article", () =>
       max-width: 80%;
       font-family: Bebas Neue;
     }
-    &__posted-on {
-      max-width: fit-content;
-      padding: 0rem 1rem;
-      border-radius: 24px;
-      font-size: 0.8rem;
-      background: #a3bdae;
-      &__text {
-        font-weight: bold;
+    &__details {
+      display: flex;
+      &__posted-on {
+        max-width: fit-content;
+        padding: 0rem 1rem;
+        border-radius: 24px;
+        font-size: 0.8rem;
+        background: #a3bdae;
+        &__text {
+          font-weight: bold;
+        }
+        &__image {
+          :deep(img) {
+            margin: 0px !important;
+          }
+        }
       }
-      &__image {
-        :deep(img) {
-          margin: 0px !important;
+      &__reading-time {
+        vertical-align: middle;
+        margin: auto 1rem;
+        font-size: 0.8rem;
+        background: white;
+        border-radius: 24px;
+        padding: 0.1rem 0.6rem;
+      }
+    }
+  }
+  @media only screen and (max-width: 960px) {
+    &__title-block {
+      &__title {
+        font-size: 2rem;
+      }
+      &__posted-on {
+        font-size: 0.6rem;
+        vertical-align: middle;
+        padding: 0.2rem 0.5rem !important;
+        &__image {
+          margin-right: 4px;
         }
       }
     }
   }
-     @media only screen and (max-width: 960px){
- &__title-block {
-    &__title {
-      font-size: 2rem;
-    }
-    &__posted-on {
-      font-size: 0.6rem;
-      vertical-align: middle;
-      padding: 0.2rem 0.5rem !important;
-        &__image {
-          margin-right:4px;
-      }
-    }
-  }
-    }
 
   :deep(article) {
-    @media only screen and (max-width: 960px){
-          background: #ffff;
+    @media only screen and (max-width: 960px) {
+      background: #ffff;
       padding-left: 1.5rem !important;
       padding-right: 1.5rem !important;
       h1,
@@ -116,16 +188,14 @@ const { data } = await useAsyncData("article", () =>
       li,
       ol,
       ul,
-      p
-    {
-        margin-left:0px !important;
-        a{
-           margin-left:0px !important;
+      p {
+        margin-left: 0px !important;
+        a {
+          margin-left: 0px !important;
         }
-  
       }
-      p{
-        a{
+      p {
+        a {
           white-space: normal;
         }
       }
@@ -323,6 +393,7 @@ const { data } = await useAsyncData("article", () =>
       font-family: Roboto;
       a {
         text-decoration: none;
+        white-space: normal;
       }
     }
     h3 small {

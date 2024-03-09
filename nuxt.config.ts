@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   content: {
+    markdown: { remarkPlugins: ['remark-reading-time'] },
     highlight: {
       theme: "github-dark",
   },

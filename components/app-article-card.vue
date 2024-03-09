@@ -24,7 +24,7 @@
       </v-row>
       <v-row align="center">
         <v-col cols="12" class="pb-0 pt-1">
-          <p class="text-caption">April 9,2021 · 1 minute</p>
+          <p class="text-caption">{{formattedDate}} · {{readingTime}}</p>
         </v-col>
       </v-row>
     </v-container>
@@ -72,11 +72,20 @@ const props = defineProps({
     type: String,
     default: "",
   },
+  readingTime: {
+    type: String,
+    default: "1 min",
+  },
+  date:{
+    type: String,
+    default: "",
+  }
 });
 const isBlog = computed(() => props.type === "blog");
 function goToDetails() {
   navigateTo(props.to);
 }
+const formattedDate = computed(() => new Date(props.date).toLocaleString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }));
 </script>
 <style lang="scss" scoped>
 .article {

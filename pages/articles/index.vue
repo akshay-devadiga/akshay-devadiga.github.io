@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-container fluid>
-      <v-row :class="{'mx-10':$vuetify.display.mdAndUp}" justify="center">
+      <v-row :class="{'mx-10':$vuetify.display.mdAndUp}" justify="start">
         <v-col v-for="article in articles" :key="article.title" :cols="$vuetify.display.mdAndUp?4: 12">
           <app-article-card
             :to="article._path"
@@ -9,6 +9,8 @@
             :description="article.description"
             :title="article.title"
             :type="'article'"
+            :reading-time="article.readingTime.text"
+            :date="article.created_date"
           />
         </v-col>
       </v-row>
