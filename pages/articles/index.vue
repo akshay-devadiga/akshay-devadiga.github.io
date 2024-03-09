@@ -9,6 +9,7 @@
             :description="article.description"
             :title="article.title"
             :type="'article'"
+            :tags="article.tags"
             :reading-time="article.readingTime.text"
             :date="article.created_date"
           />

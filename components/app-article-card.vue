@@ -3,7 +3,7 @@
     <v-container fluid class="article__container py-6">
       <v-row justify="space-between">
         <v-col cols="auto" class="py-0">
-          <v-chip class="mb-2 article__container__chip" size="small"> {{tag}} </v-chip>
+          <v-chip class="mb-2 article__container__chip mr-1" size="small" v-for="tag in tags" :key="tag"> {{tag}} </v-chip>
         </v-col>
         <v-col cols="auto" class="py-0">
           <v-avatar size="20" rounded="0">
@@ -68,8 +68,8 @@ const props = defineProps({
     type: String,
     default: "blog",
   },
-  tag: {
-    type: String,
+  tags: {
+    type: Array,
     default: "",
   },
   readingTime: {

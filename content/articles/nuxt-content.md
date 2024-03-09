@@ -1,7 +1,7 @@
 ---
 created_date: 2023-06-27 12:23
 author: Jacky FAN
-Tags: Nuxt, Nuxt Content
+Tags: [Nuxt, Nuxt Content]
 description: This post is a tutorial on how to enable and customize code highlighting in Nuxt Content, a file-based Content Management System for Nuxt.js applications. The post covers creating a project with Nuxt Content, creating content files with code blocks, configuring Nuxt Config to enable code highlighting, and creating a component to render content. The post also provides examples of customized code highlighting and links to relevant resources.
 ---
 

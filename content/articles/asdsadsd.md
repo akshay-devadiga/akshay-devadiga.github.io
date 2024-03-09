@@ -1,7 +1,7 @@
 ---
 title: How to apply Google’s font with NuxtJS and Tailwind
 created_date: 2023-08-14 00:16:00
-Tags: NuxtJS, Tailwind, Google Fonts, Roboto, CSS
+tags: [NuxtJS, Tailwind, Google Fonts, Roboto, CSS]
 author: Jacky FAN
 description: Learn how to apply Google's modern-looking Roboto font to your NuxtJS website with the help of TailwindCSS. This blog post covers the steps to load the font using the Nuxt Google Fonts module and apply it to your website with TailwindCSS.
 head:

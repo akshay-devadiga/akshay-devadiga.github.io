@@ -1,7 +1,7 @@
 ---
 title: Running Meta's Llama 2 on LocalAI
 created_date: 2023-07-24 12:23
-Tags: Meta, Microsoft, Llama 2, LocalAI, C++, PyTorch, GGML, ChatWizard
+tags: [Meta, Microsoft, Llama 2, LocalAI, C++, PyTorch, GGML, ChatWizard]
 author: Jacky FAN
 description: This blog post provides a guide on how to run Meta's new language model, Llama 2, on LocalAI. It includes an overview of Llama 2 and LocalAI, as well as a step-by-step guide on how to set up and run the language model on your own computer. The author also shares their thoughts on Llama 2's performance in answering questions, generating programming code, and writing documents.
 head:
