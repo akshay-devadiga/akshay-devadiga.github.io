@@ -2,15 +2,37 @@
   <div>
     <v-container fluid>
       <v-row :class="{'mx-10':$vuetify.display.mdAndUp}" justify="center">
-        <v-col v-for="article in articles" :key="article.title" :cols="$vuetify.display.mdAndUp?8: 12">
+        <v-col  :cols="$vuetify.display.mdAndUp?8: 12">
+    <v-chip-group
+        v-model="selectedTags"
+        column
+        multiple
+        class=""
+        selected-class="text-white-lighten-4 bg-green"
+        color="#F2EFE1"
+      >
+        <v-chip
+          filter
+          size="small"
+          :value="tag"
+          v-for="tag in allTags"
+          :key="tag"
+        >
+          {{tag}}
+        </v-chip>
+      </v-chip-group>
+      </v-col>
+      </v-row>
+      <v-row :class="{'mx-10':$vuetify.display.mdAndUp}" justify="center">
+        <v-col v-for="til in filteredTILs" :key="til.title" :cols="$vuetify.display.mdAndUp?8: 12">
           <app-til-card
-            :to="article._path"
+            :to="til._path"
             :url="''"
-            :description="article.description"
-            :title="article.title"
-            :type="'article'"
-            :reading-time="article.readingTime.text"
-            :date="article.created_date"
+            :description="til.description"
+            :title="til.title"
+            :type="'til'"
+            :reading-time="til.readingTime.text"
+            :date="til.created_date"
           />
         </v-col>
       </v-row>
@@ -24,10 +46,29 @@
 </template>
 
 <script setup>
-const articles = await queryContent("/til")
+import {ref} from "vue";
+const tils = await queryContent("/til")
   .sort({ date: -1 })
   .where({ _partial: false })
   .find();
+
+const selectedTags = ref("");
+const filteredTILs = computed(() => {
+  let result = tils;
+ if (selectedTags.value !== null && selectedTags.value.length > 0) {
+    selectedTags.value.forEach(tag => {
+      result = result.filter(til => {
+        if (til.tags.length>0) {
+          return til.tags.includes(tag);
+        } else {
+          return false;
+        }
+      });
+    });
+  }
+  return result;
+});
+const allTags = [...new Set(tils.flatMap(til => til.tags))];
 </script>
 
 <style lang="scss" scoped></style>
