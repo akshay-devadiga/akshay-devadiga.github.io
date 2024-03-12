@@ -7,7 +7,7 @@
         v-model="selectedTags"
         column
         multiple
-      class="justify-center"
+        class="justify-center"
         selected-class="text-white-lighten-4 bg-green"
         color="#F2EFE1"
       >
@@ -23,7 +23,7 @@
       </v-chip-group>
       </v-col>
       </v-row>
-      <v-row :class="{'mx-10':$vuetify.display.mdAndUp}" justify="start">
+      <v-row :class="{'mx-10':$vuetify.display.mdAndUp}" :justify="filteredArticles.length>1?'start':'center'">
         <v-col v-for="article in filteredArticles" :key="article.title" :cols="$vuetify.display.mdAndUp?4: 12">
           <app-article-card
             :to="article._path"
