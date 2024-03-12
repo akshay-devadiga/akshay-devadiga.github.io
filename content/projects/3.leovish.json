@@ -1,0 +1,11 @@
+{
+    "id":1,
+    "githubUrl":"",
+    "imageUrl":"/images/projects/leovish.gif",
+    "type":"Project",
+    "hasDemoLink": true,
+    "tags": ["Vuetify", "Vue","Landing Page","Google analytics","Seo"],
+    "demoLink":"https://leovish.in/",
+    "description":"This project involved creating a sample SEO landing page aimed at enhancing the online visibility of an interior design business. Through meticulous implementation of Google Analytics tracking, I've established a robust system encompassing domain analytics, Google Business listings, and SEO strategies.",
+    "images":["/images/projects/leovish-1.png","/images/projects/leovish-2.png","/images/projects/leovish-3.png","/images/projects/leovish-4.png"]
+}

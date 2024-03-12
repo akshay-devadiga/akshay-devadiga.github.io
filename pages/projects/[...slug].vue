@@ -3,6 +3,15 @@ const route = useRoute();
 const { data } = await useAsyncData("projects", () =>
   queryContent(`projects/${route.params.slug[0]}`).findOne()
 );
+useSeoMeta({
+   title: `Akshay Devadiga | ${data.value.title}`,
+  ogTitle: `Akshay Devadiga | ${data.value.title}`,
+  description: `Akshay Devadiga | ${data.value.description}`,
+  ogDescription: `Akshay Devadiga | ${data.value.description}`,
+  // ogImage: 'https://example.com/image.png',
+  twitterCard: "summary_large_image",
+  articleAuthor: "Akshay Devadiga",
+});
 </script>
 <template>
   <v-container class="articles-details" fluid>

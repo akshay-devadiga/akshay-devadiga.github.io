@@ -24,16 +24,22 @@
                 >
                   <v-card-item class="pt-0">
                     <div class="bg-white pb-3" v-if="pageMeta">
-                      <v-card-title class="text-center my-2"  :class="{
-                      'text-body': $vuetify.display.smAndDown,
-                      'text-h5': $vuetify.display.mdAndUp,
-                    }">
+                      <v-card-title
+                        class="text-center my-2"
+                        :class="{
+                          'text-body': $vuetify.display.smAndDown,
+                          'text-h5': $vuetify.display.mdAndUp,
+                        }"
+                      >
                         {{ pageMeta.breadcrumbTitle }}
                       </v-card-title>
-                      <v-card-subtitle class="text-center mb-5"   :class="{
-                    'text-caption': $vuetify.display.smAndDown,
-                    'text-body': $vuetify.display.mdAndUp,
-                  }">
+                      <v-card-subtitle
+                        class="text-center mb-5"
+                        :class="{
+                          'text-caption': $vuetify.display.smAndDown,
+                          'text-body': $vuetify.display.mdAndUp,
+                        }"
+                      >
                         {{ pageMeta.breadcrumbDescription }}
                       </v-card-subtitle>
                     </div>
@@ -82,18 +88,21 @@ const pageMeta = computed(() => {
     case "/lab":
       pageMetaData = {
         breadcrumbTitle: "lab",
+        seoTitle: "Lab",
         breadcrumbDescription: "Here are some of my experiements",
       };
       break;
     case "/til":
       pageMetaData = {
         breadcrumbTitle: "til",
+        seoTitle: "TIL",
         breadcrumbDescription: "Small notes on the go",
       };
       break;
     case "/projects":
       pageMetaData = {
         breadcrumbTitle: "projects",
+        seoTitle: "Projects",
         breadcrumbDescription:
           "Here are a collection of projects I've worked on, including prototypes, side projects, hands-on projects, and contributions to open-source initiatives.",
       };
@@ -101,11 +110,23 @@ const pageMeta = computed(() => {
     case "/articles":
       pageMetaData = {
         breadcrumbTitle: "articles",
+        seoTitle: "Articles",
         breadcrumbDescription: "My thoughts, tutorials and much more",
       };
       break;
     default:
       pageMetaData = null;
+  }
+  if (pageMetaData) {
+    useSeoMeta({
+      title: `${pageMetaData.seoTitle} | Akshay Devadiga`,
+      ogTitle: `${pageMetaData.seoTitle}  | Akshay Devadiga`,
+      description: `Akshay Devadiga | ${pageMetaData.breadcrumbDescription}`,
+      ogDescription: `Akshay Devadiga | ${pageMetaData.breadcrumbDescription}`,
+      // ogImage: 'https://example.com/image.png',
+      twitterCard: "summary_large_image",
+      articleAuthor: "Akshay Devadiga",
+    });
   }
   //route.path
   return pageMetaData;

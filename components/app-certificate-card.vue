@@ -1,18 +1,15 @@
 <template>
-  <v-card>
+  <v-card class="app-certificate-card">
   <div class="px-2 pt-2">
     <v-img
+   class="app-certificate-card__image"
       :src="url"
-      class="align-end"
-      gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-      height="200px"
       contain
     >
     </v-img>
   </div>
-
     <v-sheet class="pa-2">
-      <v-container class="bg-grey-lighten-2" fluid>
+      <v-container class="bg-grey-lighten-2 app-certificate-card__text" fluid>
         <v-row align="center">
           <v-col cols="1">
             <v-avatar size="20">
@@ -39,3 +36,12 @@ defineProps({
   },
 });
 </script>
+<style lang="scss" scoped>
+.app-certificate-card{
+  border-radius: 18px;
+  &__text{
+border-radius: 10px;
+overflow: hidden;
+  }
+}
+</style>

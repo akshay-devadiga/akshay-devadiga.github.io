@@ -187,33 +187,14 @@
                                 'text-body': $vuetify.display.mdAndUp,
                               }"
                             >
-                              <p>Hey! I am <b>Akshay</b></p>
-                              <br />
-                              <p>
-                                Frontend engineer based in <b>Bengaluru</b>,
-                                India.
-                              </p>
-                              <p>
-                                I specialize in developing user-centric,
-                                accessible and performant interfaces. My primary
-                                focus is on writing clean, maintainable code
-                                with a balance of considering time constraints
-                                for efficient delivery.I am passionate about
-                                collaborating with talented individuals to
-                                <b
-                                  >build products that make a meaningful
-                                  impact</b
-                                >. It brings me joy to learn and grow through
-                                the process.
-                              </p>
-                              <br />
-                              <p>
-                                Although I have extensive frontend experience
-                                spanned across years, I also adeptly pivot to
-                                backend tasks when necessary. Additionally, I
-                                engage in creating informal mockups as needed.
-                              </p>
-                              <p>I write here once in a while.</p>
+                            Hello!<br/>
+I’m <b>Akshay Devadiga</b>,
+<br/>
+<p>I have over 4 years of experience in Frontend development and I have worked with in-house teams and remotely as well. Currently, I work as a senior software/product engineer at <a target="_blank" class="bg-red text-decoration-none rounded px-1" href="https://www.njorda.se">Njorda</a>. My experience spans various technologies and domains with a strong focus on performance, code quality, User Experience, responsive user interfaces, the infinity and everything in between. I also have over 6 months of recent full-stack experience. </p>
+     <br /><p>At present, I specialize in building web applications with Vue and I was among the first 100 <a target="_blank" class="bg-green text-decoration-none rounded px-1" href="https://certificates.dev/c/9a807e17-3072-4672-8778-472bb2ae0823">certified</a> vue js developers by Vue School / Evan You.</p>
+     <br /><p>Apart from development, I do have a strong passion for design, which I try to combine with innovation from inception to release in all of my works.</p>
+
+                             
                             </v-card>
                           </v-col>
                           <v-col cols="auto" class="py-0">
@@ -419,11 +400,11 @@
                                 fluid
                                 :class="{ 'px-0': $vuetify.display.mdAndDown }"
                               >
-                                <v-row dense>
+                                <v-row dense justify="center">
                                   <v-col
                                     v-for="card in certifications"
                                     :key="card.title"
-                                    :cols="$vuetify.display.mdAndUp ? 6 : 12"
+                                    :cols="$vuetify.display.mdAndUp ? 10 : 12"
                                   >
                                     <app-certificate-card
                                       :url="card.url"
@@ -440,12 +421,12 @@
                               </v-container>
                             </v-card>
                           </v-col>
-                          <v-col cols="auto" class="py-0">
+                          <!-- <v-col cols="auto" class="py-0">
                             <v-avatar size="70">
                               <v-img src="images/about/chain.svg" contain />
                             </v-avatar>
-                          </v-col>
-                          <v-col
+                          </v-col> -->
+                          <!-- <v-col
                             cols="12"
                             data-step-no="5"
                             class="about__content__under-deck"
@@ -511,13 +492,12 @@
                                 </v-row>
                               </v-card-text>
                             </v-card>
-                          </v-col>
-                          <v-col cols="auto" class="py-0">
+                          </v-col> <v-col cols="auto" class="py-0">
                             <v-avatar size="70">
                               <v-img src="images/about/chain.svg" contain />
                             </v-avatar>
-                          </v-col>
-                          <v-col
+                          </v-col> -->
+                          <!-- <v-col
                             cols="12"
                             data-step-no="6"
                             class="about__content__under-deck"
@@ -557,7 +537,7 @@
                                 </v-row>
                               </v-container>
                             </v-card>
-                          </v-col>
+                          </v-col> -->
                           <v-col cols="auto" class="py-0">
                             <v-avatar size="260">
                               <v-img
@@ -1164,6 +1144,7 @@ const hexToRgb = (hex) => {
   const b = bigint & 255;
   return { r, g, b };
 };
+
 </script>
 <style lang="scss">
 canvas {

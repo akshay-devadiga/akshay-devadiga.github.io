@@ -1,5 +1,12 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  app: {
+    head: {
+      htmlAttrs: {
+        lang: "en"
+      },
+    },
+  },
   content: {
     markdown: { remarkPlugins: ['remark-reading-time'] },
     highlight: {

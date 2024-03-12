@@ -1,5 +1,5 @@
 <template>
-  <v-card class="project" height="300" flat  @click="goToDetails">
+  <v-card class="project" height="300" flat>
     <v-img
       :src="imageUrl"
       gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
@@ -32,6 +32,7 @@
                   size="small"
                   class=" text-caption text-uppercase font-weight-bold"
                   rounded
+                    @click="goToDetails"
                 >
                   Check details
                 </v-btn>
@@ -43,12 +44,12 @@
                   size="small"
                   class="text-overline font-weight-bold"
                   rounded
-                 
+                  :href="demoLink"
+                  target="_blank"
                 >
                   Demo
                 </v-btn>
-              </v-col>
-              <v-col cols="auto" class="text-white">{{ date }} </v-col></v-row
+              </v-col></v-row
             >
           </v-container>
         </div>
@@ -78,6 +79,10 @@ const props = defineProps({
   type: {
     type: String,
     default: "",
+  },
+  demoLink: {
+    type: String,
+    default: "/projects",
   },
   hasDemoLink:{
     type:Boolean,

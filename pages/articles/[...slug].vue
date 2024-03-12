@@ -11,6 +11,15 @@ function scrollToBlock(id) {
     element.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
+useSeoMeta({
+   title: `Akshay Devadiga | ${data.value.title}`,
+  ogTitle: `Akshay Devadiga | ${data.value.title}`,
+  description: `Akshay Devadiga | ${data.value.description}`,
+  ogDescription: `Akshay Devadiga | ${data.value.description}`,
+  // ogImage: 'https://example.com/image.png',
+  twitterCard: "summary_large_image",
+  articleAuthor: "Akshay Devadiga",
+});
 </script>
 <template>
   <v-container

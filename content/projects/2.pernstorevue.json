@@ -1,0 +1,11 @@
+{
+    "id":1,
+    "githubUrl":"",
+    "imageUrl":"/images/projects/pernstore.gif",
+    "type":"Open Source",
+    "hasDemoLink": true,
+    "tags": ["Vuetify", "Vue","Postgres", "Express","Node"],
+    "demoLink":"https://pern-store.netlify.app",
+    "description":"PernStore is very lightweight ecommerce product that might be useful for SMB's to list their limited set of products. I have recently started working on the vue 3 version of the pern store, hoping to create a pull request soon. Note: The above link is demo of the react pern store.",
+    "images":["/images/projects/pernstore-1.png","/images/projects/pernstore-2.png","/images/projects/pernstore-3.png"]
+}

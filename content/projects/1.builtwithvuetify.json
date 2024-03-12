@@ -1,0 +1,13 @@
+{
+    "id":1,
+    "githubUrl":"",
+    "imageUrl":"/images/projects/builtwithvuetify.gif",
+    "title":"BuiltWithVuetify",
+    "date":"Jan 2023",
+    "type":"Project",
+    "hasDemoLink": true,
+    "tags": ["Vuetify", "Vue"],
+    "demoLink":"https://builtwithvuetify.com/",
+    "description":"This is supposed to be a site which offers vuetify templates. This is currently under WIP",
+    "images":["/images/projects/builtwithvuetify.gif"]
+}

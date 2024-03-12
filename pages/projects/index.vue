@@ -1,12 +1,12 @@
 <template>
   <v-container fluid>
-  <v-row :class="{'mx-10':$vuetify.display.mdAndUp}" justify="center">
+  <v-row justify="center">
         <v-col  :cols="$vuetify.display.mdAndUp?8: 12">
     <v-chip-group
         v-model="selectedTags"
         column
         multiple
-        class=""
+        class="justify-center"
         selected-class="text-white-lighten-4 bg-green"
         color="#F2EFE1"
       >
@@ -36,6 +36,7 @@
           :date="project.date"
           :type="project.type"
           :hasDemoLink="project.hasDemoLink"
+          :demoLink="project.demoLink"
         />
       </v-col>
     </v-row>

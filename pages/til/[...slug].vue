@@ -1,7 +1,7 @@
 <script setup>
 const route = useRoute();
 const { data } = await useAsyncData("til", () =>
-  queryContent(`articles/${route.params.slug[0]}`).findOne()
+  queryContent(`til/${route.params.slug[0]}`).findOne()
 );
 import { ref } from "vue";
 const markdownElement = ref(null);
@@ -11,6 +11,16 @@ function scrollToBlock(id) {
     element.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }
+
+useSeoMeta({
+   title: `Akshay Devadiga | ${data.value.title}`,
+  ogTitle: `Akshay Devadiga | ${data.value.title}`,
+  description: `Akshay Devadiga | ${data.value.description}`,
+  ogDescription: `Akshay Devadiga | ${data.value.description}`,
+  // ogImage: 'https://example.com/image.png',
+  twitterCard: "summary_large_image",
+  articleAuthor: "Akshay Devadiga",
+});
 </script>
 <template>
   <v-container

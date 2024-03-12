@@ -7,7 +7,7 @@
         v-model="selectedTags"
         column
         multiple
-        class=""
+       class="justify-center"
         selected-class="text-white-lighten-4 bg-green"
         color="#F2EFE1"
       >
