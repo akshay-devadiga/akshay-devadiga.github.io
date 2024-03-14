@@ -22,7 +22,7 @@
                   class="pt-0"
                   :class="pageClassContent"
                 >
-                  <v-card-item class="pt-0">
+                  <v-card-item class="pt-0" :class="{'px-0':$vuetify.display.smAndDown}">
                     <div class="bg-white pb-3" v-if="pageMeta">
                       <v-card-title
                         class="text-center my-2"
@@ -71,7 +71,7 @@ const pageClassContent = computed(() => {
   return {
     "app-layout__container__content-wrapper__home-page-variant":
       route.path === "/",
-    "app-layout__container__content-wrapper": route.path != "/",
+    "app-layout__container__content-wrapper": route.path != "/"
   };
 });
 const pageClassHeader = computed(() => {
@@ -136,8 +136,15 @@ const pageMeta = computed(() => {
 .app-layout {
   min-height: 100vh;
   &__container {
+       @media only screen and (max-width: 960px) {
+        margin-top:1rem;
+         background-image: linear-gradient(#ffff, #a3bdae);
+         }
     &__home-page-variant {
       background-image: linear-gradient(#a3bdae, #3185fc);
+         @media only screen and (max-width: 960px) {
+           background-image: linear-gradient(#a3bdae, #3185fc);
+         }
     }
     &__header-wrapper {
       background: #a3bdae;
@@ -171,6 +178,7 @@ const pageMeta = computed(() => {
           transparent 3%,
           transparent 80%
         );
+        
       background-size: 50px 50px;
       &__home-page-variant {
         background-position: 54px 55px, 0px 0px, 0px 0px, 0px 0px, 0px 0px;

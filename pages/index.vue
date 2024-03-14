@@ -107,6 +107,7 @@
                             cols="12"
                             class="about__content__deck"
                             style="position: relative; z-index: 2"
+                            v-if="$vuetify.display.mdAndUp"
                           >
                             <v-row justify="center">
                               <v-col cols="6" class="pa-0">
@@ -168,7 +169,7 @@
                               </span>
                             </v-card> -->
                           </v-col>
-                          <v-col cols="auto" class="py-0">
+                          <v-col cols="auto" class="py-0" v-if="$vuetify.display.mdAndUp">
                             <v-avatar size="70">
                               <v-img src="images/about/chain.svg" contain />
                             </v-avatar>
@@ -1212,6 +1213,11 @@ canvas {
     max-height: 100vh;
     overflow: auto;
     z-index: 2;
+    @media only screen and (max-width: 960px) {
+       overflow-y: scroll !important;
+       overflow-x: hidden;
+       max-height: 100%;
+    }
     &__menu {
       &__card {
         border-radius: 25px;
